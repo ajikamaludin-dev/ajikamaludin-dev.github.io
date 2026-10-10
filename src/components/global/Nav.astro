@@ -1,0 +1,112 @@
+---
+import { navLinks, profile } from "../../data/profile.ts";
+import ThemeToggle from "../islands/ThemeToggle.astro";
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || path === href.replace(/\/+$/, "");
+---
+
+<header class="sticky top-0 z-40 border-b border-border-subtle bg-surface/85 backdrop-blur-sm">
+  <div class="mx-auto flex max-w-4xl items-center gap-3 px-4 py-3 sm:px-6">
+    <a
+      href="/"
+      class="inline-flex min-h-11 shrink-0 items-center rounded-md text-[15px] font-semibold tracking-tight text-fg transition-colors duration-150 hover:text-accent"
+    >
+      {profile.name}
+    </a>
+
+    <nav aria-label="Navigasi utama" class="ml-auto">
+      <!-- Desktop -->
+      <ul class="hidden items-center gap-1 md:flex">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener" : undefined}
+                aria-current={!link.external && isActive(link.href) ? "page" : undefined}
+                class={
+                  link.external
+                    ? "rainbow-text inline-flex min-h-11 items-center px-3.5 text-sm font-medium underline-offset-4 hover:underline"
+                    : `inline-flex min-h-11 items-center rounded-md px-3 text-sm transition-colors duration-150 ${
+                        isActive(link.href) ? "text-accent" : "text-fg-muted hover:text-fg"
+                      }`
+                }
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Mobile trigger -->
+      <button
+        type="button"
+        id="nav-toggle"
+        class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-fg-muted transition-colors duration-150 hover:text-fg md:hidden"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Buka menu navigasi"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <ThemeToggle />
+  </div>
+
+  <!-- Mobile menu -->
+  <ul
+    id="nav-menu"
+    class="hidden flex-col gap-1 border-t border-border-subtle px-4 py-2 md:hidden"
+  >
+    {
+      navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener" : undefined}
+            aria-current={!link.external && isActive(link.href) ? "page" : undefined}
+            class={
+              link.external
+                ? "rainbow-text flex min-h-11 items-center px-3.5 text-[15px] font-medium underline-offset-4 hover:underline"
+                : `flex min-h-11 items-center rounded-md px-3 text-[15px] transition-colors duration-150 ${
+                    isActive(link.href) ? "text-accent" : "text-fg-muted hover:text-fg"
+                  }`
+            }
+          >
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</header>
+
+<script>
+  const trigger = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+
+  trigger?.addEventListener('click', () => {
+    const open = trigger.getAttribute('aria-expanded') === 'true';
+    trigger.setAttribute('aria-expanded', String(!open));
+    trigger.setAttribute('aria-label', open ? 'Buka menu navigasi' : 'Tutup menu navigasi');
+    menu?.classList.toggle('hidden', open);
+    menu?.classList.toggle('flex', !open);
+  });
+
+  // Tutup menu kalau layar dilebarkan ke breakpoint desktop.
+  const mq = matchMedia('(min-width: 768px)');
+  mq.addEventListener('change', (e) => {
+    if (e.matches) {
+      trigger?.setAttribute('aria-expanded', 'false');
+      menu?.classList.add('hidden');
+      menu?.classList.remove('flex');
+    }
+  });
+</script>

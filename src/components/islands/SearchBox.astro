@@ -1,0 +1,159 @@
+---
+/**
+ * Pencarian statis berbasis Pagefind.
+ *
+ * Sengaja pakai <script> biasa: Pagefind sendiri yang menjadi bundle-nya,
+ * dan ia hanya dimuat ketika ada yang mengetik — tidak ada request tambahan
+ * di halaman yang tidak punya kotak pencarian. Tidak ada framework island.
+ *
+ * Di mode dev, `/pagefind/pagefind.js` tidak ada; komponen ini harus gagal
+ * dengan tenang, bukan melempar error.
+ *
+ * Keamanan: query selalu masuk lewat `textContent`. Eksplisit di-ekspos:
+ * hanya tag `<mark>` yang diizinkan dari hasil Pagefind, sisanya dibuang.
+ */
+---
+
+<div class="relative">
+  <label for="site-search" class="sr-only">Cari artikel</label>
+  <input
+    type="search"
+    id="site-search"
+    placeholder="Cari artikel…"
+    autocomplete="off"
+    role="combobox"
+    aria-expanded="false"
+    aria-controls="search-results"
+    aria-autocomplete="list"
+    class="min-h-11 w-full rounded-md border border-border-control bg-surface px-4 text-[15px] text-fg outline-none transition-colors duration-150 placeholder:text-fg-muted focus:border-accent"
+  />
+
+  <p id="search-status" role="status" aria-live="polite" class="mt-3 text-sm text-fg-muted"></p>
+
+  <ul id="search-results" class="mt-2 space-y-2"></ul>
+</div>
+
+<script>
+  // Tipe harus dideklarasikan di sini — frontmatter Astro tidak masuk scope <script>.
+  type PagefindDoc = {
+    url: string;
+    meta: { title?: string };
+    excerpt: string;
+  };
+
+  type PagefindApi = {
+    init: () => Promise<void>;
+    search: (
+      q: string,
+    ) => Promise<{ results: Array<{ id: string; data: () => Promise<PagefindDoc> }> }>;
+  };
+
+  const input = document.getElementById("site-search") as HTMLInputElement | null;
+  const status = document.getElementById("search-status") as HTMLElement | null;
+  const list = document.getElementById("search-results") as HTMLUListElement | null;
+
+  // Path lewat variabel: file ini baru ada setelah `pagefind --site dist`,
+  // jadi TypeScript tidak boleh mencoba me-resolve-nya saat build.
+  const PAGEFIND_URL = "/pagefind/pagefind.js";
+
+  /**
+   * Parse potongan dari Pagefind, lalu buang semua node selain <mark>.
+   * Dengan mengekstrak node teks satu per satu, tidak ada markup lain
+   * yang ikut terpasang — berapa pun isinya.
+   */
+  function safeExcerpt(raw: string): DocumentFragment {
+    const doc = new DOMParser().parseFromString(raw, "text/html");
+    const out = document.createDocumentFragment();
+
+    for (const node of Array.from(doc.body.childNodes)) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        out.append(document.createTextNode(node.textContent ?? ""));
+        continue;
+      }
+      if (node instanceof HTMLElement && node.tagName === "MARK") {
+        const mark = document.createElement("mark");
+        mark.textContent = node.textContent ?? "";
+        out.append(mark);
+        continue;
+      }
+      out.append(document.createTextNode(node.textContent ?? ""));
+    }
+    return out;
+  }
+
+  if (input && status && list) {
+    let pagefind: PagefindApi | null = null;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let seq = 0;
+
+    const load = async (): Promise<PagefindApi | null> => {
+      if (pagefind) return pagefind;
+      try {
+        const mod = (await import(/* @vite-ignore */ PAGEFIND_URL)) as unknown as PagefindApi;
+        await mod.init();
+        pagefind = mod;
+        return pagefind;
+      } catch {
+        status.textContent = "Pencarian hanya tersedia setelah situs dibangun.";
+        return null;
+      }
+    };
+
+    const clear = () => {
+      while (list.firstChild) list.removeChild(list.firstChild);
+    };
+
+    input.addEventListener("input", () => {
+      clearTimeout(timer);
+      const query = input.value.trim();
+
+      if (query.length < 2) {
+        clear();
+        status.textContent = "";
+        input.setAttribute("aria-expanded", "false");
+        return;
+      }
+
+      timer = setTimeout(async () => {
+        const mySeq = ++seq;
+        const pf = await load();
+        if (!pf || mySeq !== seq) return;
+
+        const { results } = await pf.search(query);
+        if (mySeq !== seq) return;
+
+        clear();
+        input.setAttribute("aria-expanded", results.length > 0 ? "true" : "false");
+
+        if (results.length === 0) {
+          status.textContent = `Tidak ada hasil untuk “${query}”.`;
+          return;
+        }
+
+        status.textContent = `${results.length} hasil untuk “${query}”.`;
+
+        for (const result of results.slice(0, 8)) {
+          const data = await result.data();
+          if (mySeq !== seq) return;
+
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = data.url;
+          a.className = "block rounded-md px-1 py-2 text-[15px]";
+
+          const title = document.createElement("span");
+          title.className = "block font-medium text-fg";
+          title.textContent = data.meta?.title ?? data.url;
+
+          const excerpt = document.createElement("span");
+          excerpt.className = "mt-0.5 block text-sm text-fg-muted";
+          excerpt.append(safeExcerpt(data.excerpt ?? ""));
+
+          a.append(title, excerpt);
+          li.append(a);
+          list.append(li);
+        }
+      }, 180);
+    });
+  }
+</script>

@@ -1,0 +1,85 @@
+---
+import { products } from "../../data/products.ts";
+import { profile } from "../../data/profile.ts";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const statusLabel: Record<string, string> = {
+  live: "berjalan",
+  beta: "beta",
+  discontinued: "dihentikan",
+  idea: "konsep",
+};
+---
+
+<BaseLayout
+  title={`Produk — KasirAja dan karya ${profile.name}`}
+  description="Produk yang dibangun Aji Kamaludin dan dipakai orang lain, termasuk KasirAja POS yang tersedia di Android dan versi web."
+>
+  <header class="max-w-[65ch]">
+    <h1 class="text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.02em]">
+      Products
+    </h1>
+    <p class="mt-5 text-[clamp(1rem,1.5vw,1.125rem)] leading-relaxed text-fg-muted">
+      Berbeda dari halaman project: di sini hanya produk yang benar-benar dipakai
+      orang lain, bukan studi kasus.
+    </p>
+  </header>
+
+  <ol class="mt-14 space-y-12">
+    {
+      products.map((product) => (
+        <li class="border-t border-border-subtle pt-6">
+          <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 text-sm text-fg-muted">
+            <span>{statusLabel[product.status] ?? product.status}</span>
+            {product.year && <span class="font-mono tabular-nums">{product.year}</span>}
+          </div>
+
+          <h2 class="mt-2 text-[clamp(1.35rem,2.6vw,1.75rem)] font-semibold tracking-tight">
+            {product.name}
+          </h2>
+
+          <p class="mt-2 max-w-[65ch] text-[clamp(1rem,1.4vw,1.0625rem)] leading-relaxed">
+            {product.description}
+          </p>
+
+          <ul class="mt-4 max-w-[65ch] space-y-1.5">
+            {product.features.map((f) => (
+              <li class="relative pl-4 text-[15px] leading-relaxed text-fg-muted">
+                <span
+                  aria-hidden="true"
+                  class="absolute left-0 top-[0.6em] h-1 w-1 rounded-full bg-accent"
+                />
+                {f}
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-5 flex flex-wrap gap-3">
+            {product.links.map((link, i) => (
+              <a
+                href={link.url}
+                rel="noopener"
+                target="_blank"
+                class={
+                  i === 0
+                    ? "inline-flex min-h-11 items-center rounded-md bg-accent px-5 text-[15px] font-medium text-surface transition-opacity duration-150 hover:opacity-90"
+                    : "inline-flex min-h-11 items-center rounded-md border border-border-control px-5 text-[15px] text-fg transition-colors duration-150 hover:border-accent hover:text-accent"
+                }
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          {product.stack.length > 0 && (
+            <p class="mt-4 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[12px] text-fg-muted">
+              {product.stack.map((s) => (
+                <span>{s}</span>
+              ))}
+            </p>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</BaseLayout>

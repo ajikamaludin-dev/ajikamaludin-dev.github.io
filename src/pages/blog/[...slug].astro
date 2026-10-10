@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from "astro:content";
+import PostLayout from "../../layouts/PostLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      prev: posts[i - 1],
+      next: posts[i + 1],
+    },
+  }));
+}
+
+const { post, prev, next } = Astro.props;
+const { Content } = await render(post);
+// `posts` terurut dari yang terbaru, jadi `prev` = lebih baru dan `next` = lebih lama.
+---
+
+<PostLayout
+  title={post.data.title}
+  description={post.data.description}
+  pubDate={post.data.pubDate}
+  updatedDate={post.data.updatedDate}
+  tags={post.data.tags}
+>
+  <Content />
+</PostLayout>
+
+<nav aria-label="Navigasi artikel" class="mt-16 border-t border-border-subtle pt-6">
+  <ul class="flex flex-col gap-4 sm:flex-row sm:justify-between">
+    <li class="sm:max-w-[45%]">
+      {
+        prev && (
+          <a
+            href={`/blog/${prev.id}/`}
+            class="block text-sm text-fg-muted transition-colors duration-150 hover:text-accent"
+          >
+            <span class="block">Lebih baru</span>
+            <span class="mt-0.5 block text-fg">{prev.data.title}</span>
+          </a>
+        )
+      }
+    </li>
+    <li class="sm:max-w-[45%] sm:text-right">
+      {
+        next && (
+          <a
+            href={`/blog/${next.id}/`}
+            class="block text-sm text-fg-muted transition-colors duration-150 hover:text-accent"
+          >
+            <span class="block">Lebih lama</span>
+            <span class="mt-0.5 block text-fg">{next.data.title}</span>
+          </a>
+        )
+      }
+    </li>
+  </ul>
+</nav>

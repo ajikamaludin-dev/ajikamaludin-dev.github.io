@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from "astro:content";
+import PostLayout from "../../layouts/PostLayout.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects", ({ data }) => !data.draft);
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<PostLayout
+  title={project.data.title}
+  description={project.data.description}
+  pubDate={project.data.pubDate}
+  tags={project.data.stack}
+>
+  <Content />
+</PostLayout>
+
+<p class="mt-14 border-t border-border-subtle pt-6">
+  <a
+    href="/projects/"
+    class="text-sm text-fg-muted underline-offset-4 transition-colors duration-150 hover:text-accent hover:underline"
+  >
+    Kembali ke semua project
+  </a>
+</p>

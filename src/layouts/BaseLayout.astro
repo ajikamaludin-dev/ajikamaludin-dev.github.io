@@ -1,0 +1,95 @@
+---
+import "../styles/global.css";
+import Footer from "../components/global/Footer.astro";
+import Nav from "../components/global/Nav.astro";
+import { profile } from "../data/profile.ts";
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Ganti kalau halaman punya OG image sendiri. */
+  ogImage?: string;
+  /** `article` untuk halaman post. */
+  ogType?: string;
+}
+
+const {
+  title = "Aji Kamaludin — Software Engineer",
+  // Default ini adalah pengaman, bukan konten. Setiap halaman seharusnya mengisi sendiri.
+  description = "Portfolio Aji Kamaludin — software engineer di Klaten, Indonesia. Riwayat kerja, blog teknis, dan produk.",
+  ogImage = "/og/default.jpg",
+  ogType = "website",
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(ogImage, Astro.site);
+
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  url: profile.site,
+  image: new URL(profile.avatar, Astro.site).href,
+  sameAs: [profile.contacts.github, profile.contacts.linkedin],
+  address: { "@type": "PostalAddress", addressLocality: profile.location },
+  knowsAbout: ["PHP", "Laravel", "Go", "React", "AWS", "Linux", "DevOps", "Networking"],
+};
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <!-- Google tag (gtag.js) -->
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-KNKN8TTYHK"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-KNKN8TTYHK");
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="id_ID" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="alternate" type="application/rss+xml" title="Aji Kamaludin" href="/rss.xml" />
+    <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
+    <script is:inline>
+      const t = localStorage.getItem('theme');
+      document.documentElement.classList.toggle(
+        'dark',
+        t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)
+      );
+    </script>
+  </head>
+  <body class="flex min-h-dvh flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-surface"
+    >
+      Lompat ke konten utama
+    </a>
+    <Nav />
+    <main id="main" class="mx-auto w-full max-w-4xl flex-1 px-4 py-14 sm:px-6 sm:py-16">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

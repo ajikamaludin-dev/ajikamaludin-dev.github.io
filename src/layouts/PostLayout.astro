@@ -1,0 +1,72 @@
+---
+import { profile } from "../data/profile.ts";
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags?: string[];
+}
+
+const { title, description, pubDate, updatedDate, tags = [] } = Astro.props;
+
+const fmt = (d: Date) =>
+  new Intl.DateTimeFormat("id-ID", { day: "numeric", month: "long", year: "numeric" }).format(d);
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+const postLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  author: { "@type": "Person", name: profile.name, url: profile.site },
+  publisher: { "@type": "Person", name: profile.name, url: profile.site },
+  mainEntityOfPage: pageUrl,
+  image: new URL("/og/default.jpg", Astro.site).href,
+  inLanguage: "id",
+  keywords: tags.join(", "),
+};
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article>
+    <header class="max-w-[65ch]">
+      <h1
+        class="text-[clamp(1.85rem,4.5vw,2.75rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-balance"
+      >
+        {title}
+      </h1>
+
+      <div class="mt-5 flex flex-wrap items-baseline gap-x-4 gap-y-2 text-sm text-fg-muted">
+        <time datetime={pubDate.toISOString()} class="font-mono tabular-nums">
+          {fmt(pubDate)}
+        </time>
+        {
+          updatedDate && (
+            <span class="font-mono tabular-nums">diperbarui {fmt(updatedDate)}</span>
+          )
+        }
+        {
+          tags.length > 0 && (
+            <span class="flex flex-wrap gap-x-3 gap-y-1">
+              {tags.map((t) => <span>{t}</span>)}
+            </span>
+          )
+        }
+      </div>
+      <p class="mt-5 max-w-[65ch] text-[clamp(1rem,1.5vw,1.125rem)] leading-relaxed text-fg-muted">
+        {description}
+      </p>
+    </header>
+
+    <div class="prose mt-10">
+      <slot />
+    </div>
+
+    <script type="application/ld+json" set:html={JSON.stringify(postLd)} />
+  </article>
+</BaseLayout>

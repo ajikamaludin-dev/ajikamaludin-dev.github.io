@@ -1,0 +1,77 @@
+---
+import { navLinks, profile } from "../../data/profile.ts";
+
+const { contacts, name } = profile;
+const year = new Date().getFullYear();
+
+const contactRows = [
+  { label: "Email", value: contacts.email, href: `mailto:${contacts.email}` },
+  {
+    label: "WhatsApp",
+    value: contacts.whatsapp,
+    href: `https://wa.me/${contacts.whatsapp.replace(/[^0-9]/g, "")}`,
+  },
+  // Teks diturunkan dari URL supaya tidak ada dua sumber untuk satu tautan.
+  { label: "GitHub", value: contacts.github.replace(/^https?:\/\//, ""), href: contacts.github },
+  {
+    label: "LinkedIn",
+    value: contacts.linkedin.replace(/^https?:\/\//, ""),
+    href: contacts.linkedin,
+  },
+];
+---
+
+<footer class="mt-20 border-t border-border-subtle">
+  <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6">
+    <div class="grid gap-10 sm:grid-cols-2">
+      <div>
+        <p class="text-[15px] font-semibold text-fg">{name}</p>
+        <p class="mt-1 max-w-[40ch] text-sm leading-relaxed text-fg-muted">
+          {profile.role} — {profile.location}.
+        </p>
+        <ul class="mt-5 flex flex-wrap gap-x-4 gap-y-2">
+          {
+            navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener" : undefined}
+                  class="inline-flex min-h-11 items-center text-sm text-fg-muted underline-offset-4 transition-colors duration-150 hover:text-fg hover:underline"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-sm font-medium text-fg">Kontak</p>
+        <ul class="mt-3 space-y-1">
+          {
+            contactRows.map((row) => (
+              <li>
+                <a
+                  href={row.href}
+                  rel="noopener"
+                  class="group inline-flex min-h-11 items-baseline gap-2 text-sm"
+                >
+                  <span class="w-20 shrink-0 text-fg-muted">{row.label}</span>
+                  <span class="break-all text-fg underline-offset-4 transition-colors duration-150 group-hover:text-accent group-hover:underline">
+                    {row.value}
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <p class="mt-10 border-t border-border-subtle pt-6 text-xs text-fg-muted">
+      © {year} {name}. Dibangun dengan Astro — situs statis.
+    </p>
+  </div>
+</footer>
