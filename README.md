@@ -39,31 +39,6 @@ Yang **tetap** jadi risiko: supply-chain saat build ( compromised npm package, d
 | Runtime         | [Bun](https://bun.sh)                      | `1.4.2`            |
 
 > Versi dari registry npm, Oktober 2026, **semua sudah terpasang dan terverifikasi** `bun run lint` / `check` / `build` semuanya OK.
->
-> **Jebakan:** `typescript@7` sudah rilis tapi `astro check` belum mendukungnya — error `does not currently support TypeScript 7.0`. Karena itu versi di-pin ke `^6.0.3`. Jangan naikkan ke 7 sampai Astro mengumumkan dukungan.
-
-### Kenapa bukan yang lain
-
-- **Next.js `output: 'export'`** — bawaan runtime, middleware, dan server components yang tidak kepakai di mode static. Image optimizer bawaan dan ISR tidak jalan di mode export. Build lebih berat dan lambat.
-- **Hugo** — build paling cepat, tapi Go template bukan komponen. Setup dan iterasi konten lebih berat, dan MDX untuk demo project hampir mustahil.
-- **VitePress** — dirancang untuk dokumentasi, bukan portfolio. Theming terlalu terikat ke docs layout.
-- **11ty** — ringan, tapi ekosistem integrasi kecil dan fitur interaktif untuk section products harus dirakit manual.
-
----
-
-## Catatan Konfigurasi
-
-Keputusan yang tidak terlihat dari `package.json` tapi mahal kalau lupa:
-
-**Biome 2.5.15 — API berubah dari v1.**
-
-- `organizeImports` → `assist.actions.organizeImports` (tapi di 2.5.15 blok itu sendiri ditolak, jadi ditiadakan)
-- `linter.rules.recommended` → `linter.rules.preset: "recommended"`
-- `files.ignore` → `files.includes`, dan folder tanpa trailing `/**` (`"!**/dist"`, bukan `"!**/dist/**"`)
-- `formatter.indentStyle: "single"` tidak valid — hanya `tab` / `space`
-- CSS `@theme` (Tailwind v4) butuh `css.parser.tailwindDirectives: true`
-- `bunx biome migrate --write` ada tapi hasilnya masih ditolak `biome check` — jangan andalkan
-- Override di `biome.json` untuk `**/*.astro` menonaktifkan `noUnusedVariables` / `noUnusedImports`, karena Biome tidak melihat pemakaian di template Astro. Sama untuk `noImportantStyles` di `global.css` — `!important` di blok `prefers-reduced-motion` memang wajib.
 
 ---
 
@@ -251,33 +226,6 @@ Build command `bun run build`, output directory `dist`.
 - Free, global CDN, SSL otomatis, preview URL untuk setiap PR
 - Deployment dari branch = branch alias, dari commit = unik
 
-**Security headers tidak ditulis tangan.** `bun run build` menjalankan tiga tahap:
-
-```
-astro build && pagefind --site dist && bun ./scripts/generate-headers.mjs
-```
-
-Tahap terakhir menghitung SHA-256 tiap `<script>` inline di HTML hasil build lalu menulis `dist/_headers`. Ini yang memungkinkan CSP ketat tanpa `unsafe-inline`:
-
-```
-Content-Security-Policy:
-  default-src 'self';
-  script-src 'self' 'wasm-unsafe-eval' https://www.googletagmanager.com 'sha256-…';
-                             <- hash, bukan unsafe-inline
-  style-src 'self';                                   <- tanpa unsafe-inline juga
-  img-src 'self' data:; font-src 'self' data:
-  connect-src 'self' https://*.google-analytics.com;  <- Google Analytics
-  worker-src 'self' blob:;                            <- Pagefind
-  object-src 'none'; base-uri 'self'; form-action 'self';
-  frame-ancestors 'none'
-X-Content-Type-Options: nosniff
-X-Frame-Options: DENY
-Referrer-Policy: strict-origin-when-cross-origin
-Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=()
-Strict-Transport-Security: max-age=31536000; includeSubDomains
-Cross-Origin-Opener-Policy: same-origin
-```
-
 Catatan penting:
 
 - **Hash berubah tiap build.** Jangan copy-paste nilai hash dari file lama. Cukup jalankan `bun run build`.
@@ -324,46 +272,6 @@ Semua terpasang **project-local** lewat `bunx skills add <pkg>` (tanpa `-g`), te
 > `profile-data` (milik saya, sudah dihapus) tidak punya padanan publik yang layak. Yang terdekat cuma skill bikin CV dengan 754–1.2K install dan isinya tidak relevan dengan menjaga `src/data/`. Fakta proyek yang terkonfirmasi tetap ada di [Fakta yang Sudah Dikonfirmasi](#fakta-yang-sudah-dikonfirmasi) di bawah.
 
 Cara paksa pakai: `/skill:nama-skills`
-
----
-
-## Fakta yang Sudah Dikonfirmasi
-
-Keputusan user, dipakai sebagai sumber kebenaran bersama CV:
-
-- **Go dipakai di PT Bank Raya Indonesia Tbk.** Pengalaman nyata, bukan sekadar klaim di summary. Tampilkan di entry Bank Raya beserta stack-nya.
-- **TeknoGIS Indonesia** — cukup dicatat sebagai `year: '2018'` + `type: 'part-time'`. Tidak perlu bulan.
-- **Foto memakai `pp.jpg` apa adanya** (avatar anime-style). Bukan placeholder yang perlu diganti.
-
----
-
-## Data Gap (dari riset CV)
-
-Hal yang perlu dilengkapi sebelum situs dianggap final:
-
-- **Gap 2015–2018** — freelance sudah tercatat, tapi periode ini belum dirinci. Perlu dilengkapi.
-- **Thumbnail produk** — KasirAja butuh screenshot (Play Store / web) untuk section products.
-- **Domain** — `ajikamaludin.id` sudah dipakai sebagai website aktif atau masih kosong? Tentukan apakah perlu redirect dari path lama.
-
-> Catatan: urutan tanggal di CV sudah benar (Mindo 2023-10 s.d. 2024-12 di atas Bank Raya 2022-07 s.d. 2023-10). Tidak perlu diperbaiki.
-
----
-
-## Roadmap
-
-- [x] Scaffold Astro 7 + Tailwind 4
-- [x] Design tokens + dark/light theme (`@theme` + `.dark` di `global.css`)
-- [x] Layout global (skip link + theme bootstrap inline di `<head>`)
-- [x] Nav + Footer (+ island `ThemeToggle` dan menu mobile, nol framework)
-- [x] Halaman `/` dan `/about` dari data CV
-- [x] Content collection blog + 3 artikel (2 terbit, 1 draft)
-- [x] Section projects — **dikosongkan sesuai permintaan; dua file disimpan sebagai `draft: true`**
-- [x] Skills & tautan digabung ke `/about`, halaman `/uses` dihapus
-- [x] Section products (KasirAja)
-- [x] RSS + sitemap + OG image (generate via `bun run og`)
-- [x] Structured data JSON-LD (Person di semua halaman, BlogPosting di konten)
-- [x] Pagefind search (indeks 10 halaman, bahasa `id`)
-- [x] Security headers (`dist/_headers`, CSP berbasis hash — tanpa `unsafe-inline`)
 
 ---
 
