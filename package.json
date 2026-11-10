@@ -30,6 +30,7 @@
     "@astrojs/check": "^0.9.10",
     "@biomejs/biome": "^2.5.15",
     "pagefind": "^1.5.2",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "workbox-build": "^7.4.1"
   }
 }
