@@ -2,8 +2,6 @@
 
 Aturan kerja untuk agent di repo `personal-profile` — situs statis <https://ajikamaludin.id>.
 
-Baca file ini sebelum ngubah apa pun. Kalau ada instruksi global (`~/.pi/agent/AGENTS.md`) yang bertentangan, yang menang adalah yang lebih ketat.
-
 ---
 
 ## 1. Deskripsi Project
