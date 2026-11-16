@@ -27,24 +27,6 @@ export interface Product {
  */
 export const products: Product[] = [
   {
-    slug: "kasiraja",
-    name: "KasirAja",
-    tagline: "Aplikasi POS sederhana untuk kebutuhan kasir harian.",
-    status: "live",
-    description:
-      "Aplikasi point-of-sale berbasis SAAS. Tersedia sebagai aplikasi Android dan versi web, " +
-      "dibangun dengan JavaScript, React, dan React Native.",
-    features: ["Versi Android di Google Play Store", "Versi web yang bisa diakses langsung"],
-    links: [
-      { label: "KasirAja Web", url: "http://kasiraja.ajikamaludin.id/" },
-      {
-        label: "KasirAja Android",
-        url: "https://play.google.com/store/apps/details?id=com.kasirajaandroid",
-      },
-    ],
-    stack: ["JavaScript", "React", "React Native"],
-  },
-  {
     slug: "intikasir",
     name: "Intikasir",
     tagline: "Jualan rapi, usaha naik kelas",
@@ -66,6 +48,24 @@ export const products: Product[] = [
       { label: "WhatsApp", url: "https://wa.me/62895392034000" },
     ],
     stack: ["Flutter", "Dart", "SQLite"],
+  },
+  {
+    slug: "kasiraja",
+    name: "KasirAja",
+    tagline: "Aplikasi POS sederhana untuk kebutuhan kasir harian.",
+    status: "discontinued",
+    description:
+      "Aplikasi point-of-sale berbasis SAAS. Tersedia sebagai aplikasi Android dan versi web, " +
+      "dibangun dengan JavaScript, React, dan React Native.",
+    features: ["Versi Android di Google Play Store", "Versi web yang bisa diakses langsung"],
+    links: [
+      { label: "KasirAja Web", url: "http://kasiraja.ajikamaludin.id/" },
+      {
+        label: "KasirAja Android",
+        url: "https://play.google.com/store/apps/details?id=com.kasirajaandroid",
+      },
+    ],
+    stack: ["JavaScript", "React", "React Native"],
   },
 ];
 
