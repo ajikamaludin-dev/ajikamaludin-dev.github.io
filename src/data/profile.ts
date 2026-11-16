@@ -24,7 +24,7 @@ export const profile = {
   heroTagline:
     "Six years building backends and infrastructure with PHP, Go, and AWS — based in Klaten, Indonesia.",
   contacts: {
-    whatsapp: "+62 838 4074 5543",
+    whatsapp: "6281325307692",
     email: "aji19kamaludin@gmail.com",
     github: "https://github.com/ajikamaludin-dev",
     linkedin: "https://www.linkedin.com/in/19ajikamaludin",

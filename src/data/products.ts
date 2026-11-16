@@ -45,7 +45,7 @@ export const products: Product[] = [
     ],
     links: [
       { label: "Kenali Intikasir", url: "/intikasir/" },
-      { label: "WhatsApp", url: "https://wa.me/62895392034000" },
+      { label: "WhatsApp", url: "https://wa.me/6281325307692" },
     ],
     stack: ["Flutter", "Dart", "SQLite"],
   },
