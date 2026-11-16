@@ -1,0 +1,267 @@
+---
+import IntikasirLegalLayout from "../../layouts/IntikasirLegalLayout.astro";
+---
+
+<IntikasirLegalLayout
+  title="Kebijakan Privasi Intikasir"
+  description="Kebijakan privasi aplikasi kasir Android Intikasir: data tersimpan lokal di perangkat, tidak ada server pengembang, telemetri Firebase terbatas yang dapat dimatikan, dan backup di akun Google pengguna sendiri."
+  updated="16 November 2026"
+>
+  <p>
+    Kebijakan ini menjelaskan bagaimana aplikasi <strong>Intikasir</strong> menangani data pengguna.
+    Intikasir adalah aplikasi kasir Android untuk warung dan usaha kecil, berjalan offline, dan
+    dirilis sebagai perangkat lunak open source di bawah lisensi GPL-3.0.
+  </p>
+
+  <h2>1. Ringkasan</h2>
+
+  <ul>
+    <li>
+      Intikasir <strong>tidak memiliki server/backend</strong> dan <strong>tidak mengirim data usaha
+      pengguna ke pengembang</strong>. Satu-satunya pengiriman adalah telemetri terbatas ke Firebase
+      (lihat §9), yang dapat dimatikan dan tidak berisi data usaha.
+    </li>
+    <li>Seluruh data usaha disimpan <strong>lokal di perangkat pengguna</strong>.</li>
+    <li>
+      Backup ke Google Drive hanya berjalan <strong>saat pengguna menekan tombol backup</strong>, dan
+      file disimpan di ruang aplikasi pada akun Google pengguna sendiri.
+    </li>
+    <li>
+      Tidak ada akun Intikasir, iklan, atau pelacakan untuk iklan. Aplikasi mengirim{" "}
+      <strong>telemetri terbatas</strong> ke Google Firebase (crash report, statistik agregat harian, dan
+      trace performa teknis) <strong>hanya saat perangkat online</strong>; aplikasi{" "}
+      <strong>tetap 100% berfungsi saat offline</strong>, dan telemetri dapat dimatikan di Pengaturan.
+    </li>
+    <li>Pengembang tidak dapat mengakses data usaha pengguna.</li>
+  </ul>
+
+  <h2>2. Data yang Disimpan Aplikasi</h2>
+
+  <p>Data berikut dibuat dan disimpan oleh pengguna di perangkatnya:</p>
+
+  <ul>
+    <li>Profil toko dan profil pemilik</li>
+    <li>Produk, kategori, dan supplier</li>
+    <li>Pelanggan/kontak, jika fitur kasbon diaktifkan</li>
+    <li>Transaksi penjualan, item transaksi, pembayaran, diskon, dan retur</li>
+    <li>Pembelian dan pergerakan stok</li>
+    <li>Kas masuk/keluar dan kategori biaya/pendapatan</li>
+    <li>Piutang pelanggan (kasbon) dan riwayat pembayarannya, jika fitur diaktifkan</li>
+    <li>Pengaturan aplikasi, metode pembayaran, rekening penampung, dan gambar QRIS merchant</li>
+    <li>Log backup, import, dan export</li>
+    <li>PIN aplikasi dalam bentuk hash, jika pengguna mengaktifkan PIN</li>
+  </ul>
+
+  <p>
+    Aplikasi tidak meminta nama, email, nomor telepon, atau akun Intikasir. Nomor HP
+    pelanggan/supplier hanya disimpan jika pengguna mengisinya sendiri.
+  </p>
+
+  <h2>3. Lokasi Penyimpanan Data</h2>
+
+  <ul>
+    <li>Database aplikasi disimpan di penyimpanan internal aplikasi pada perangkat Android.</li>
+    <li>Data tidak diunggah ke server pengembang.</li>
+    <li>Data tidak disinkronkan antarperangkat pada versi ini.</li>
+    <li>Menghapus aplikasi dari perangkat akan menghapus data lokal yang tersimpan di dalamnya.</li>
+    <li>
+      Database lokal <strong>tidak dienkripsi</strong>. Keamanan bergantung pada sandbox Android dan
+      PIN aplikasi yang bersifat opsional.
+    </li>
+  </ul>
+
+  <h2>4. Backup ke Google Drive</h2>
+
+  <ul>
+    <li>Backup hanya berjalan <strong>secara manual</strong>, saat pengguna memilih Backup.</li>
+    <li>
+      Aplikasi meminta izin Google dengan scope <code>drive.appdata</code> (<code>appDataFolder</code>),
+      yaitu ruang penyimpanan khusus aplikasi di Google Drive pengguna.
+    </li>
+    <li>File backup disimpan di akun Google pengguna sendiri. Pengembang tidak memiliki akses ke file tersebut.</li>
+    <li>Aplikasi hanya menyimpan <strong>satu backup terakhir</strong> (overwrite).</li>
+    <li>File backup <strong>tidak dienkripsi</strong> dan berekstensi <code>.backup</code>.</li>
+    <li>Pengguna dapat menghapus backup melalui pengaturan akun Google atau dengan menghapus akses aplikasi.</li>
+    <li>
+      Penggunaan data Google dibatasi hanya untuk backup dan restore. Data Google tidak digunakan
+      untuk iklan, tidak dijual, dan tidak dibagikan ke pihak lain.
+    </li>
+    <li>Pemrosesan akun Google juga tunduk pada kebijakan privasi Google.</li>
+  </ul>
+
+  <h2>5. Export dan Import Excel</h2>
+
+  <ul>
+    <li>Export dan import berjalan hanya atas tindakan pengguna.</li>
+    <li>File Excel yang diexport <strong>tidak diberi password</strong> dan disimpan ke lokasi yang dipilih pengguna.</li>
+    <li>
+      File yang diexport berada di luar kendali aplikasi setelah disimpan; pengguna bertanggung jawab
+      atas penyimpanan dan pembagiannya.
+    </li>
+  </ul>
+
+  <h2>6. Izin Aplikasi</h2>
+
+  <p>Aplikasi dapat meminta izin berikut:</p>
+
+  <ul>
+    <li><strong>Kamera</strong> — memindai barcode produk.</li>
+    <li><strong>Bluetooth</strong> — menghubungkan printer thermal.</li>
+    <li>
+      <strong>Internet</strong> — untuk login Google, backup/restore ke Google Drive, dan telemetri
+      best-effort (crash report, statistik agregat, trace performa, lihat §9). Operasional kasir{" "}
+      <strong>tidak membutuhkan internet</strong>.
+    </li>
+    <li>
+      <strong>Akses file yang dipilih pengguna</strong> — untuk export/import Excel melalui pemilih
+      file Android.
+    </li>
+  </ul>
+
+  <p>Aplikasi tidak meminta akses ke kontak, lokasi, mikrofon, atau riwayat panggilan.</p>
+
+  <h2>7. Yang Tidak Dilakukan Aplikasi</h2>
+
+  <ul>
+    <li>Tidak membuat akun pengguna di server.</li>
+    <li>
+      Tidak mengumpulkan analitik untuk iklan atau data penggunaan perorangan. Satu-satunya telemetri
+      adalah crash report, statistik agregat harian, dan trace performa teknis via Firebase (lihat §9),
+      yang dapat dimatikan.
+    </li>
+    <li>Tidak menampilkan iklan.</li>
+    <li>Tidak menjual atau membagikan data usaha ke pihak ketiga.</li>
+    <li>Tidak melacak lokasi pengguna.</li>
+    <li>Tidak mengakses file di luar yang dipilih pengguna atau ruang aplikasi di Google Drive.</li>
+  </ul>
+
+  <h2>8. Pihak Ketiga</h2>
+
+  <ul>
+    <li><strong>Google Drive / Google Sign-In</strong> — untuk backup dan restore.</li>
+    <li>
+      <strong>Google Firebase (Crashlytics, Analytics &amp; Performance Monitoring)</strong> — crash
+      report, telemetri agregat, dan trace performa teknis (lihat §9). Bersifat opsional dan dapat
+      dimatikan.
+    </li>
+    <li><strong>Google Play Store</strong> — untuk distribusi aplikasi.</li>
+    <li><strong>Printer thermal</strong> — perangkat yang dihubungkan pengguna sendiri.</li>
+  </ul>
+
+  <p>
+    Aplikasi tidak mengirim data usaha (isi transaksi, harga/nama barang, nama pelanggan/toko) ke pihak
+    ketiga mana pun. Pihak ketiga tersebut memiliki kebijakan privasi masing-masing.
+  </p>
+
+  <h2>9. Telemetri Firebase (Crash Reporting, Statistik Agregat &amp; Performa)</h2>
+
+  <p>
+    Sejak Draft PRD v0.72 (Performance Monitoring sejak Draft v0.73), Intikasir mengirim{" "}
+    <strong>telemetri terbatas</strong> ke Google Firebase (kebijakan privasi Google berlaku){" "}
+    <strong>hanya saat perangkat terhubung ke internet</strong>. Pengiriman bersifat{" "}
+    <strong>best-effort</strong>: seluruh fitur kasir tetap berfungsi penuh tanpa internet, dan
+    kegagalan atau keterlambatan pengiriman tidak berdampak apa pun pada aplikasi. Telemetri dapat
+    dimatikan kapan pun di <strong>Pengaturan → Diagnostik &amp; Perangkat → Kirim data diagnostik</strong>.
+  </p>
+
+  <p><strong>Yang dikirim:</strong></p>
+
+  <ul>
+    <li>
+      <strong>Crash report</strong> via Firebase Crashlytics — jejak kejadian saat aplikasi berhenti
+      mendadak (fatal) atau error yang tidak tertangani, disertai ID perangkat.
+    </li>
+    <li>
+      <strong>Trace performa teknis</strong> via Firebase Performance Monitoring — durasi app start dan
+      request jaringan (metrik waktu saja, trace <strong>otomatis</strong>; tidak ada custom trace dan
+      tidak ada isi data), sejak Draft PRD v0.73.
+    </li>
+    <li>
+      <strong>Statistik agregat harian</strong> via Firebase Analytics — event{" "}
+      <code>telemetry_snapshot</code>, maksimal 1× per perangkat per hari, berisi <strong>angka saja</strong>:
+      ukuran database (byte), jumlah produk/kategori/supplier/customer, jumlah serta total dan rata-rata
+      nilai transaksi jual dan beli, total nominal kas masuk/keluar dan saldo bersih, total kasbon belum
+      lunas (estimasi), jumlah unit stok seluruh produk wajib stok, jumlah produk di atau di bawah stok
+      minimum, total kuantitas item terjual/terbeli.
+    </li>
+    <li>
+      <strong>ID perangkat</strong> (<code>ANDROID_ID</code>, yaitu{" "}
+      <code>Settings.Secure.ANDROID_ID</code> — tanpa izin khusus, unik per perangkat+pengguna+tanda
+      tangan aplikasi) — dikirim sebagai user property <code>device_id</code> di Analytics dan custom
+      key <code>device_id</code> di Crashlytics, untuk mengenali perangkat yang perlu ditindaklanjuti.
+    </li>
+    <li>
+      Data teknis standar dari Android/Firebase: model dan merek perangkat, versi Android, versi
+      aplikasi, bahasa, negara.
+    </li>
+  </ul>
+
+  <p>
+    <strong>Yang TIDAK pernah dikirim:</strong> isi transaksi, harga atau nama barang, nama
+    pelanggan/supplier/toko, PIN atau hash-nya, foto, atau berkas apa pun dari perangkat.
+  </p>
+
+  <p>
+    ID perangkat tidak dipakai untuk iklan, tidak dijual, dan tidak dibagikan ke pihak ketiga selain
+    Google sebagai penyedia Firebase. Pengembang hanya memakainya untuk mendiagnosis crash dan memahami
+    cara aplikasi digunakan secara agregat.
+  </p>
+
+  <h2>10. Penyimpanan dan Penghapusan</h2>
+
+  <ul>
+    <li>Data lokal tetap ada sampai pengguna menghapusnya, menghapus data aplikasi, atau menghapus aplikasi.</li>
+    <li>Backup tetap ada di akun Google pengguna sampai pengguna menghapusnya.</li>
+    <li>Pengguna dapat menghapus data lokal kapan pun melalui pengaturan Android atau dengan menghapus aplikasi.</li>
+    <li>Pengembang tidak menyimpan salinan data pengguna dan tidak dapat memulihkan data yang hilang.</li>
+  </ul>
+
+  <h2>11. Keamanan</h2>
+
+  <ul>
+    <li>Data dilindungi oleh sandbox aplikasi Android.</li>
+    <li>PIN aplikasi bersifat opsional dan disimpan sebagai hash.</li>
+    <li>Database dan file backup tidak dienkripsi pada versi ini.</li>
+    <li>
+      Siapa pun yang memiliki akses ke perangkat yang tidak terkunci, akun Google, atau file backup
+      dapat membaca data.
+    </li>
+    <li>
+      Pengguna disarankan mengaktifkan kunci layar perangkat, menjaga akun Google, dan menyimpan file
+      backup di tempat yang aman.
+    </li>
+  </ul>
+
+  <h2>12. Anak-Anak</h2>
+
+  <p>
+    Intikasir ditujukan untuk pelaku usaha dan bukan untuk anak-anak. Aplikasi tidak dengan sengaja
+    mengumpulkan data anak-anak.
+  </p>
+
+  <h2>13. Perubahan Kebijakan</h2>
+
+  <p>
+    Kebijakan ini dapat diperbarui sebelum atau setelah rilis. Versi terbaru akan disertakan bersama
+    aplikasi dan/atau di repositori publik. Tanggal pembaruan akan dicantumkan di bagian atas.
+  </p>
+
+  <h2>14. Kontak</h2>
+
+  <p>
+    Intikasir dikembangkan secara perorangan; tidak ada badan usaha atau alamat fisik yang dipublikasikan.
+  </p>
+
+  <p>Pertanyaan tentang kebijakan ini dapat disampaikan melalui:</p>
+
+  <ul>
+    <li>Email: <a href="mailto:aji19kamaludin@gmail.com">aji19kamaludin@gmail.com</a></li>
+    <li>
+      WhatsApp:{" "}
+      <a href="https://wa.me/62895392034000" rel="noopener" target="_blank">62895392034000</a>
+    </li>
+    <li>Website: <a href="https://ajikamaludin.id">https://ajikamaludin.id</a></li>
+    <li>Waktu respons: maksimal <strong>7 hari kerja</strong></li>
+    <li>Repositori publik: tautan akan dicantumkan pada halaman Tentang Aplikasi dan listing Google Play</li>
+  </ul>
+</IntikasirLegalLayout>

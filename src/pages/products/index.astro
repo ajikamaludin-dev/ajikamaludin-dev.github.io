@@ -55,20 +55,23 @@ const statusLabel: Record<string, string> = {
           </ul>
 
           <div class="mt-5 flex flex-wrap gap-3">
-            {product.links.map((link, i) => (
-              <a
-                href={link.url}
-                rel="noopener"
-                target="_blank"
+            {product.links.map((link, i) => {
+              const external = /^https?:\/\//.test(link.url);
+              return (
+                <a
+                  href={link.url}
+                  rel={external ? "noopener" : undefined}
+                  target={external ? "_blank" : undefined}
                 class={
                   i === 0
                     ? "inline-flex min-h-11 items-center rounded-md bg-accent px-5 text-[15px] font-medium text-surface transition-opacity duration-150 hover:opacity-90"
                     : "inline-flex min-h-11 items-center rounded-md border border-border-control px-5 text-[15px] text-fg transition-colors duration-150 hover:border-accent hover:text-accent"
                 }
               >
-                {link.label}
-              </a>
-            ))}
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
 
           {product.stack.length > 0 && (

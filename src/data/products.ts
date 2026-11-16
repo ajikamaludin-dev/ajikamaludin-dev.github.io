@@ -44,6 +44,29 @@ export const products: Product[] = [
     ],
     stack: ["JavaScript", "React", "React Native"],
   },
+  {
+    slug: "intikasir",
+    name: "Intikasir",
+    tagline: "Jualan rapi, usaha naik kelas",
+    status: "beta",
+    description:
+      "Aplikasi kasir Android offline untuk warung dan UMKM Indonesia: penjualan, stok, " +
+      "dan uang masuk–keluar di satu aplikasi. Gratis, tanpa iklan dan tanpa langganan; " +
+      "open source (GPL-3.0). Masih dalam tahap persiapan rilis di Google Play.",
+    features: [
+      "Kasir cepat: scan barcode kamera, hitung kembalian otomatis",
+      "Pembayaran tunai dan QRIS Static tampil di layar pembayaran",
+      "Stok otomatis terhubung dengan penjualan dan pembelian",
+      "Struk thermal Bluetooth dan struk PDF",
+      "Laporan penjualan, laba/rugi (estimasi), arus kas; export Excel",
+      "100% offline — backup lokal atau Google Drive (opsional)",
+    ],
+    links: [
+      { label: "Kenali Intikasir", url: "/intikasir/" },
+      { label: "WhatsApp", url: "https://wa.me/62895392034000" },
+    ],
+    stack: ["Flutter", "Dart", "SQLite"],
+  },
 ];
 
 export const otherLinks: Link[] = [

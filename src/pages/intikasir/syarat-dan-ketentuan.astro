@@ -1,0 +1,150 @@
+---
+import IntikasirLegalLayout from "../../layouts/IntikasirLegalLayout.astro";
+---
+
+<IntikasirLegalLayout
+  title="Syarat dan Ketentuan Intikasir"
+  description="Syarat dan ketentuan penggunaan aplikasi kasir Android Intikasir: perangkat lunak sebagaimana adanya, risiko kehilangan data, tanggung jawab backup, dan batasan tanggung jawab pengembang."
+  updated="6 November 2026"
+>
+  <p>
+    Dokumen ini menjelaskan batasan tanggung jawab penggunaan aplikasi <strong>Intikasir</strong>.
+    Dengan menggunakan aplikasi, pengguna dianggap telah membaca dan memahami syarat dan ketentuan ini.
+  </p>
+
+  <h2>1. Perangkat Lunak "Sebagaimana Adanya"</h2>
+
+  <p>
+    Intikasir disediakan <strong>"sebagaimana adanya"</strong> dan <strong>"sebagaimana tersedia"</strong>,
+    tanpa jaminan apa pun, baik tersurat maupun tersirat. Ini termasuk tanpa jaminan kelayakan
+    untuk tujuan tertentu, keakuratan, ketersediaan, atau bebas dari kesalahan.
+  </p>
+
+  <p>
+    Intikasir adalah perangkat lunak open source di bawah <strong>GPL-3.0</strong>.
+    Ketentuan penafian jaminan pada GPLv3 tetap berlaku.
+  </p>
+
+  <h2>2. Risiko Kehilangan Data</h2>
+
+  <p>
+    Data Intikasir disimpan <strong>lokal di perangkat pengguna</strong>. Data dapat hilang atau rusak karena:
+  </p>
+
+  <ul>
+    <li>Perangkat hilang, rusak, atau di-reset</li>
+    <li>Aplikasi dihapus atau data aplikasi dibersihkan</li>
+    <li>Sistem operasi melakukan reset/pemulihan</li>
+    <li>Backup gagal, tidak pernah dibuat, atau file backup rusak</li>
+    <li>Kesalahan pengguna saat restore, import, atau menghapus data</li>
+    <li>Kerusakan penyimpanan perangkat</li>
+  </ul>
+
+  <p>
+    Pengembang <strong>tidak menjamin</strong> bahwa data dapat dipulihkan. Pengembang tidak memiliki
+    salinan data pengguna dan tidak menyediakan layanan recovery.
+  </p>
+
+  <h2>3. Tanggung Jawab Backup</h2>
+
+  <ul>
+    <li>Backup berjalan <strong>hanya jika pengguna menekannya secara manual</strong>.</li>
+    <li>Pengguna bertanggung jawab memastikan backup dibuat secara rutin dan dapat direstore.</li>
+    <li>Pengguna bertanggung jawab menjaga akun Google dan file backup.</li>
+    <li>Aplikasi hanya menyimpan satu backup terakhir di ruang aplikasi Google Drive.</li>
+  </ul>
+
+  <h2>4. Backup dan Export Tanpa Enkripsi</h2>
+
+  <ul>
+    <li>Database lokal <strong>tidak dienkripsi</strong>.</li>
+    <li>File backup <code>.backup</code> <strong>tidak dienkripsi</strong>.</li>
+    <li>File Excel hasil export <strong>tidak diberi password</strong>.</li>
+    <li>Siapa pun yang memiliki akses ke perangkat, akun Google, atau file tersebut dapat membaca data.</li>
+    <li>Pengguna bertanggung jawab mengamankan perangkat, akun Google, dan file yang dibagikan.</li>
+  </ul>
+
+  <h2>5. Bukan Perangkat Akuntansi Resmi</h2>
+
+  <ul>
+    <li>Laporan laba/rugi adalah <strong>estimasi</strong>, bukan laporan akuntansi final.</li>
+    <li>
+      Perhitungan HPP memakai harga beli rata-rata sederhana dan bergantung pada kelengkapan
+      data yang diisi pengguna.
+    </li>
+    <li>Laporan tidak ditujukan untuk audit formal, pelaporan pajak, atau keperluan akuntansi resmi.</li>
+    <li>Keputusan usaha yang diambil berdasarkan laporan aplikasi adalah tanggung jawab pengguna.</li>
+  </ul>
+
+  <h2>6. Ketersediaan dan Dukungan</h2>
+
+  <ul>
+    <li>Aplikasi dapat mengalami bug, error, atau gangguan.</li>
+    <li>
+      Dukungan diberikan secara <strong>upaya terbaik</strong> melalui WhatsApp{" "}
+      <a href="https://wa.me/62895392034000" rel="noopener" target="_blank">62895392034000</a>.
+    </li>
+    <li>Waktu respons maksimal <strong>7 hari kerja</strong>; tidak ada jaminan respons instan.</li>
+    <li>Tidak ada SLA, garansi, atau kewajiban pemeliharaan tertentu.</li>
+    <li>Fitur dan tampilan dapat berubah tanpa pemberitahuan.</li>
+  </ul>
+
+  <h2>7. Layanan Pihak Ketiga</h2>
+
+  <ul>
+    <li>Backup/restore bergantung pada <strong>Google Drive</strong> dan koneksi internet.</li>
+    <li>
+      Telemetri best-effort (crash report, statistik agregat harian, trace performa teknis;
+      Performance Monitoring sejak Draft PRD v0.73) bergantung pada <strong>Google Firebase</strong>
+      (Crashlytics, Analytics &amp; Performance Monitoring) dan koneksi internet. Aplikasi tetap 100%
+      berfungsi tanpa keduanya; telemetri dapat dimatikan di Pengaturan → Diagnostik &amp; Perangkat.
+      Kegagalan layanan Firebase tidak menghentikan aplikasi.
+    </li>
+    <li>Distribusi aplikasi bergantung pada <strong>Google Play Store</strong>.</li>
+    <li>Cetak struk bergantung pada <strong>printer thermal</strong> dan kompatibilitas perangkat.</li>
+    <li>
+      Pengembang tidak bertanggung jawab atas gangguan, perubahan kebijakan, atau kegagalan
+      layanan pihak ketiga.
+    </li>
+  </ul>
+
+  <h2>8. Batasan Tanggung Jawab</h2>
+
+  <p>
+    Sejauh diizinkan hukum yang berlaku, pengembang <strong>tidak bertanggung jawab</strong> atas:
+  </p>
+
+  <ul>
+    <li>Kehilangan data, kehilangan keuntungan, atau kerugian usaha</li>
+    <li>Kerusakan perangkat atau media penyimpanan</li>
+    <li>
+      Kesalahan input, kesalahan perhitungan akibat data yang tidak lengkap, atau kesalahan penggunaan
+    </li>
+    <li>Kerugian tidak langsung, insidental, atau konsekuensial</li>
+  </ul>
+
+  <p>Pengguna menggunakan aplikasi dengan risiko sendiri.</p>
+
+  <h2>9. Lisensi</h2>
+
+  <p>
+    Intikasir dirilis di bawah <strong>GPL-3.0</strong>. Source code tersedia publik.
+    Ketentuan lisensi mengatur hak dan kewajiban penggunaan, modifikasi, dan distribusi aplikasi.
+  </p>
+
+  <h2>10. Kontak</h2>
+
+  <p>
+    Intikasir dikembangkan secara perorangan; tidak ada badan usaha atau alamat fisik yang dipublikasikan.
+  </p>
+
+  <ul>
+    <li>Email: <a href="mailto:aji19kamaludin@gmail.com">aji19kamaludin@gmail.com</a></li>
+    <li>
+      WhatsApp:{" "}
+      <a href="https://wa.me/62895392034000" rel="noopener" target="_blank">62895392034000</a>
+    </li>
+    <li>Website: <a href="https://ajikamaludin.id">https://ajikamaludin.id</a></li>
+    <li>Waktu respons: maksimal <strong>7 hari kerja</strong></li>
+  </ul>
+</IntikasirLegalLayout>

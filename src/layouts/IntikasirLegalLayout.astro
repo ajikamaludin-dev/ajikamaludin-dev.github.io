@@ -1,0 +1,60 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Teks tanggal dari dokumen draft, mis. "16 November 2026". */
+  updated: string;
+}
+
+const { title, description, updated } = Astro.props;
+
+const legalLinks = [
+  { href: "/intikasir/syarat-dan-ketentuan/", label: "Syarat dan Ketentuan" },
+  { href: "/intikasir/kebijakan-privasi/", label: "Kebijakan Privasi" },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <article>
+    <header class="max-w-[68ch]">
+      <a
+        href="/intikasir/"
+        class="inline-flex min-h-11 items-center gap-2 text-sm text-fg-muted underline-offset-4 transition-colors duration-150 hover:text-fg hover:underline"
+      >
+        <span aria-hidden="true">←</span> Tentang Intikasir
+      </a>
+      <h1
+        class="mt-4 text-[clamp(1.85rem,4.5vw,2.75rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-balance"
+      >
+        {title}
+      </h1>
+      <p class="mt-4 text-sm leading-relaxed text-fg-muted">
+        Terakhir diperbarui: <span class="font-mono tabular-nums">{updated}</span>.
+        Dokumen ini berlaku efektif saat Intikasir dirilis publik di Google Play;
+        sampai saat itu, isinya adalah draft yang dapat berubah.
+      </p>
+    </header>
+
+    <div class="prose mt-10">
+      <slot />
+    </div>
+
+    <nav
+      aria-label="Dokumen legal Intikasir"
+      class="mt-14 flex flex-wrap gap-x-6 gap-y-2 border-t border-border-subtle pt-6 text-sm"
+    >
+      {
+        legalLinks.map((link) => (
+          <a
+            href={link.href}
+            class="inline-flex min-h-11 items-center text-fg-muted underline-offset-4 transition-colors duration-150 hover:text-fg hover:underline"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </article>
+</BaseLayout>
