@@ -18,6 +18,9 @@ export interface Product {
   stack: string[];
 }
 
+/** Tagline resmi — sumber: docs/PRD.md (Intikasir). Dipakai lintas halaman. */
+export const intikasirTagline = "Jualan rapi, usaha tenang";
+
 /**
  * Produk = sesuatu yang dipakai orang lain secara nyata.
  * Project/demo yang bukan produk masuk ke `src/content/projects/`.
@@ -29,7 +32,7 @@ export const products: Product[] = [
   {
     slug: "intikasir",
     name: "Intikasir",
-    tagline: "Jualan rapi, usaha naik kelas",
+    tagline: intikasirTagline,
     status: "beta",
     description:
       "Aplikasi kasir Android offline untuk warung dan UMKM Indonesia: penjualan, stok, " +

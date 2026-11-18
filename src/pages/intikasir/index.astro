@@ -3,11 +3,13 @@ import { Image } from "astro:assets";
 import logo from "../../assets/intikasir/logo.png";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { profile } from "../../data/profile.ts";
+import { intikasirTagline } from "../../data/products.ts";
 
-const waIntikasir = "6281325307692";
-const waLink = `https://wa.me/${waIntikasir}?text=${encodeURIComponent(
+const waNumber = profile.contacts.whatsapp;
+const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(
   "Halo, saya ingin bertanya soal Intikasir.",
 )}`;
+const email = profile.contacts.email;
 
 const softwareLd = {
   "@context": "https://schema.org",
@@ -17,35 +19,27 @@ const softwareLd = {
   operatingSystem: "Android",
   inLanguage: "id",
   description:
-    "Aplikasi kasir Android offline untuk warung dan UMKM: penjualan, stok, dan uang masuk–keluar di satu aplikasi. Gratis, tanpa iklan, open source GPL-3.0.",
+    "Aplikasi kasir Android offline untuk warung dan UMKM: penjualan, stok, dan uang masuk–keluar di satu aplikasi. Gratis, tanpa langganan, open source GPL-3.0.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "IDR" },
   author: { "@type": "Person", name: profile.name, url: profile.site },
 };
 
 const problems = [
   {
-    problem: "Catatan manual tidak konsisten",
-    solution: "Setiap transaksi tercatat dan stok terpotong otomatis.",
+    problem: "Catatan masih di kertas, stok bisa kosong tanpa terasa",
+    solution: "Setiap jualan tercatat dan stok terpotong otomatis.",
   },
   {
-    problem: "Penjualan dan stok tidak terhubung",
-    solution: "Satu transaksi — kas tercatat, stok berkurang, laporan terbentuk.",
+    problem: "Uang masuk dan keluar campur, akhir bulan bingung",
+    solution: "Semua aliran uang usaha tercatat rapi di satu tempat.",
   },
   {
-    problem: "Uang masuk dan keluar tidak rapi",
-    solution: "Jurnal kas mencatat setiap aliran uang usaha.",
+    problem: "Pemilik merangkap kasir, tidak sempat pembukuan",
+    solution: "Cukup scan, tekan lunas, cetak struk — selesai.",
   },
   {
-    problem: "Sulit tahu untung dan arus kas",
-    solution: "Laporan laba/rugi (estimasi), arus kas, dan rekap harian.",
-  },
-  {
-    problem: "Aplikasi bisnis terlalu kompleks atau mahal",
-    solution: "Instal sekali, langsung jalan — tanpa langganan, tanpa pelatihan panjang.",
-  },
-  {
-    problem: "Pemilik rangkap kasir, tidak sempat pembukuan",
-    solution: "Mode praktis: scan, tekan lunas, cetak struk. Selesai.",
+    problem: "Harga dan stok berubah-ubah, untungnya tidak jelas",
+    solution: "Laporan penjualan dan laba/rugi (estimasi) tersaji kapan saja.",
   },
 ];
 
@@ -64,7 +58,7 @@ const features = [
   },
   {
     title: "Cetak struk & pricetag",
-    body: "Printer thermal Bluetooth 58/80mm, struk PDF untuk dibagikan, pricetag thermal per produk atau PDF A4 grid 3×5.",
+    body: "Printer thermal Bluetooth 58/80mm, struk PDF untuk dibagikan, dan pricetag thermal per produk atau PDF A4 grid 3×6 (18 label per halaman, ±48×40mm).",
   },
   {
     title: "Laporan usaha",
@@ -91,7 +85,7 @@ const faqs = [
   },
   {
     q: "Kapan rilis di Google Play?",
-    a: "Sedang tahap persiapan rilis publik. Untuk bertanya atau mendapat kabar rilis lebih dulu, hubungi WhatsApp 6281325307692.",
+    a: `Intikasir sedang dalam tahap final menjelang rilis publik; fitur dan tampilan masih bisa berubah. Belum ada tanggal pasti yang bisa dijanjikan. Kalau Anda ingin diberi kabar rilisnya atau bertanya dulu, hubungi WhatsApp ${waNumber} — saya balas sebisanya.`,
   },
   {
     q: "Apakah laporan Intikasir bisa dipakai untuk pajak atau audit?",
@@ -122,11 +116,11 @@ const faqs = [
       <h1
         class="mt-2 text-[clamp(2.1rem,5vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-balance"
       >
-        Jualan rapi, usaha naik kelas.
+        {intikasirTagline}.
       </h1>
       <p class="mt-4 max-w-[58ch] text-[clamp(1.02rem,1.5vw,1.2rem)] leading-relaxed text-fg-muted">
-        Intikasir membantu warung dan usaha kecil mencatat penjualan, stok, dan uang
-        masuk–keluar dari satu aplikasi — 100% offline, tanpa langganan, tanpa akun tambahan.
+        Catat penjualan, stok, dan uang masuk–keluar dari satu aplikasi. Tanpa langganan, tanpa
+        akun tambahan, dan tetap jalan walau tanpa sinyal.
       </p>
       <div class="mt-6 flex flex-wrap gap-3">
         <a
@@ -135,7 +129,7 @@ const faqs = [
           target="_blank"
           class="inline-flex min-h-11 items-center rounded-md bg-accent px-5 text-[15px] font-medium text-surface transition-opacity duration-150 hover:opacity-90"
         >
-          Tanya soal rilis via WhatsApp
+          Tanya kabar rilis via WhatsApp
         </a>
         <a
           href="#fitur"
@@ -148,30 +142,13 @@ const faqs = [
     </div>
   </section>
 
-  <section aria-labelledby="untuk-siapa" class="mt-16">
-    <h2 id="untuk-siapa" class="text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.01em]">
-      Untuk siapa
-    </h2>
-    <ul class="mt-6 grid gap-4 sm:grid-cols-2">
-      {[
-        "Warung kelontong dan toko sembako",
-        "Toko retail kecil",
-        "Usaha makanan dan minuman",
-        "Pedagang yang ingin meninggalkan buku catatan",
-      ].map((item) => (
-        <li
-          class="rounded-card border border-border-subtle bg-surface-raised px-5 py-4 text-[15px] leading-relaxed"
-        >
-          {item}
-        </li>
-      ))}
-    </ul>
-  </section>
-
   <section aria-labelledby="masalah" class="mt-16">
     <h2 id="masalah" class="text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.01em]">
-      Masalah yang paling sering ditemui warung
+      Masalah sehari-hari warung
     </h2>
+    <p class="mt-3 text-[15px] leading-relaxed text-fg-muted">
+      Mungkin ini yang Anda alami sekarang.
+    </p>
     <ul class="mt-6 divide-y divide-border-subtle border-y border-border-subtle">
       {problems.map((p) => (
         <li class="grid gap-1 py-4 sm:grid-cols-2 sm:gap-6">
@@ -185,8 +162,28 @@ const faqs = [
     </ul>
   </section>
 
-  <section aria-labelledby="fitur" id="fitur" class="mt-16 scroll-mt-24">
-    <h2 id="fitur" class="text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.01em]">
+  <section aria-labelledby="kenapa" class="mt-16">
+    <h2 id="kenapa" class="text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.01em]">
+      Kenapa gratis & aman?
+    </h2>
+    <ul class="mt-6 grid gap-4 sm:grid-cols-2">
+      {[
+        "Rp0 selamanya — tanpa langganan dan tanpa iklan",
+        "100% offline — jual tetap jalan tanpa sinyal",
+        "Data disimpan di perangkat Anda sendiri",
+        "Open source GPL-3.0 — kode bisa dibaca dan diaudit",
+      ].map((item) => (
+        <li
+          class="rounded-card border border-border-subtle bg-surface-raised px-5 py-4 text-[15px] leading-relaxed"
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="fitur-heading" id="fitur" class="mt-16 scroll-mt-24">
+    <h2 id="fitur-heading" class="text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.01em]">
       Fitur utama
     </h2>
     <ul class="mt-6 grid gap-4 sm:grid-cols-2">
@@ -260,10 +257,10 @@ const faqs = [
         Chat WhatsApp
       </a>
       <a
-        href="mailto:aji19kamaludin@gmail.com"
+        href={`mailto:${email}`}
         class="inline-flex min-h-11 items-center rounded-md border border-border-control px-5 text-[15px] text-fg transition-colors duration-150 hover:border-accent hover:text-accent"
       >
-        aji19kamaludin@gmail.com
+        {email}
       </a>
     </div>
     <p class="mt-6 text-sm text-fg-muted">
