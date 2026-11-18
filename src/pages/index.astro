@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import { consultingCopy, engagementModel, processSteps, services } from "../data/consulting.ts";
 import { experience } from "../data/experience.ts";
+import { portfolio, portfolioSheetUrl } from "../data/portfolio.ts";
 import { intikasirDownloadUrl, products } from "../data/products.ts";
 import { profile, whatsappUrl } from "../data/profile.ts";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -186,6 +187,81 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
       </section>
     )
   }
+
+  <section id="karya" class="mt-20 scroll-mt-24 @container" aria-labelledby="h-karya">
+    <div class="flex flex-wrap items-baseline justify-between gap-4 border-t border-border-subtle pt-6">
+      <h2 id="h-karya" class="text-[clamp(1.35rem,2.5vw,1.75rem)] font-semibold tracking-tight">
+        Karya
+      </h2>
+      <a
+        href={portfolioSheetUrl}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex min-h-11 shrink-0 items-center text-sm text-fg-muted underline-offset-4 transition-colors duration-150 hover:text-accent hover:underline"
+      >
+        Lihat semua 30 demo
+      </a>
+    </div>
+
+    <p class="mt-4 max-w-[64ch] text-[15px] leading-relaxed text-fg-muted">
+      Contoh aplikasi yang sudah saya bangun — sebagian besar dengan Laravel, Inertia.js, dan React.
+      Buka demo, lalu gunakan kredensial di bawah untuk masuk.
+    </p>
+
+    <div class="mt-8 grid grid-cols-1 gap-4 @md:grid-cols-2">
+      {
+        portfolio.map((item) => (
+          <article class="flex flex-col rounded-3xl border border-border-subtle bg-surface-raised p-6">
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <h3 class="text-[clamp(1.05rem,2vw,1.25rem)] font-semibold tracking-tight">
+                {item.name}
+              </h3>
+              <span class="rounded-full bg-accent/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-accent">
+                {item.type}
+              </span>
+            </div>
+
+            <p class="mt-2 max-w-[56ch] text-[15px] leading-relaxed text-fg-muted">
+              {item.description}
+            </p>
+
+            <p class="mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[12px] text-fg-muted">
+              {item.stack.map((tech) => (
+                <span>{tech}</span>
+              ))}
+            </p>
+
+            {item.credentials && (
+              <p class="mt-3 text-[13px] text-fg-muted">
+                <span class="font-medium text-fg">Demo login:</span> {item.credentials}
+              </p>
+            )}
+
+            <div class="mt-auto flex flex-wrap gap-3 pt-5">
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex min-h-11 items-center rounded-md border border-border-control px-5 text-[15px] text-fg transition-colors duration-150 hover:border-accent hover:text-accent"
+              >
+                Buka demo
+              </a>
+              {item.adminUrl && (
+                <a
+                  href={item.adminUrl}
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex min-h-11 items-center rounded-md border border-border-control px-5 text-[15px] text-fg-muted transition-colors duration-150 hover:border-accent hover:text-accent"
+                >
+                  Panel admin
+                </a>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
 
   <section class="mt-20" aria-labelledby="pengalaman">
     <div class="flex items-baseline justify-between gap-4 border-t border-border-subtle pt-6">
