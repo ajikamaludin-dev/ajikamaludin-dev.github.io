@@ -21,10 +21,10 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
   title="Konsultan MVP & Pengembang Aplikasi untuk UMKM & Startup — Aji Kamaludin"
   description="Konsultan MVP & pengembang aplikasi untuk UMKM dan startup — dari discovery sampai rilis. Juga pembuat Intikasir, kasir Android gratis untuk warung."
 >
-  <section class="relative isolate left-1/2 w-screen -translate-x-1/2 overflow-hidden">
+  <section class="relative isolate -mt-14 left-1/2 w-screen -translate-x-1/2 overflow-hidden sm:-mt-16">
     <div class="hero-gradient absolute inset-0" aria-hidden="true"></div>
 
-    <div class="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+    <div class="relative mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
       <div
         class="hero-glass grid gap-8 rounded-3xl p-6 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-12 sm:p-10"
       >
@@ -74,14 +74,14 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
     </div>
   </section>
 
-  <section id="layanan" class="mt-20 scroll-mt-24 @container" aria-labelledby="h-layanan">
+  <section id="layanan" class="mt-10 scroll-mt-24 @container" aria-labelledby="h-layanan">
     <h2
       id="h-layanan"
-      class="border-t border-border-subtle pt-6 text-[clamp(1.35rem,2.5vw,1.75rem)] font-semibold tracking-tight"
+      class="border-t border-border-subtle pt-5 text-[clamp(1.35rem,2.5vw,1.75rem)] font-semibold tracking-tight"
     >
       Layanan
     </h2>
-    <div class="mt-8 grid grid-cols-1 gap-4 @md:grid-cols-2">
+    <div class="mt-5 grid grid-cols-1 gap-4 @md:grid-cols-2">
       {
         services.map((s, i) => (
           <article class="rounded-3xl border border-border-subtle bg-surface-raised p-6">
