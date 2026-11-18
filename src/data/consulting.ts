@@ -14,11 +14,6 @@ export interface ProcessStep {
   description: string;
 }
 
-export interface ProofMetric {
-  value: string;
-  label: string;
-}
-
 export const consultingCopy = {
   eyebrow: "Konsultan MVP & Pengembang Aplikasi",
   headline: "Dari ide bisnis jadi aplikasi yang bisa dipakai.",
@@ -78,17 +73,6 @@ export const processSteps: ProcessStep[] = [
     title: "Handover & pendampingan",
     description: "Dokumentasi, serah terima, dan pendampingan saat produk mulai dipakai.",
   },
-];
-
-/**
- * Angka di bawah ini disalin persis dari `experience.ts` — bukan dibulatkan
- * atau diperkokoh. Baca catatan di spec untuk baris sumbernya.
- */
-export const proofMetrics: ProofMetric[] = [
-  { value: "−40%", label: "waktu proses data" },
-  { value: "300+", label: "properti terkelola" },
-  { value: "15+", label: "customer service harian" },
-  { value: "1.000+", label: "pengguna" },
 ];
 
 export const engagementModel = "Project-based MVP & retainer konsultasi.";

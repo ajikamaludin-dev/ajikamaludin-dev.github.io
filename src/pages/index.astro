@@ -1,12 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import {
-  consultingCopy,
-  engagementModel,
-  processSteps,
-  proofMetrics,
-  services,
-} from "../data/consulting.ts";
+import { consultingCopy, engagementModel, processSteps, services } from "../data/consulting.ts";
 import { experience } from "../data/experience.ts";
 import { intikasirDownloadUrl, products } from "../data/products.ts";
 import { profile, whatsappUrl } from "../data/profile.ts";
@@ -24,7 +18,7 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
 
 <BaseLayout
   title="Konsultan MVP & Pengembang Aplikasi untuk UMKM & Startup — Aji Kamaludin"
-  description="Konsultan MVP dan pengembang aplikasi untuk UMKM besar & startup — dari discovery dan arsitektur sampai rilis. 6+ tahun membangun sistem untuk bisnis."
+  description="Konsultan MVP & pengembang aplikasi untuk UMKM dan startup — dari discovery sampai rilis. Juga pembuat Intikasir, kasir Android gratis untuk warung."
 >
   <section class="relative isolate overflow-hidden rounded-3xl">
     <div class="hero-gradient absolute inset-0" aria-hidden="true"></div>
@@ -79,23 +73,15 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
 
   <section class="mt-12 @container" aria-labelledby="bukti">
     <h2 id="bukti" class="font-mono text-[11px] uppercase tracking-wider text-fg-muted">
-      Bukti yang bisa diverifikasi
+      Track record
     </h2>
-    <dl class="mt-4 grid grid-cols-2 gap-4 @md:grid-cols-4">
-      {
-        proofMetrics.map((m) => (
-          <div class="rounded-3xl border border-border-subtle bg-surface-raised p-5 sm:p-6">
-            <dt class="sr-only">{m.label}</dt>
-            <dd>
-              <p class="font-mono text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-none tracking-tight text-accent tabular-nums">
-                {m.value}
-              </p>
-              <p class="mt-3 text-[13px] leading-snug text-fg-muted">{m.label}</p>
-            </dd>
-          </div>
-        ))
-      }
-    </dl>
+    <div class="mt-4 rounded-3xl border border-border-subtle bg-surface-raised p-6 sm:p-8">
+      <p class="max-w-[64ch] text-[clamp(1.05rem,2vw,1.3rem)] leading-relaxed text-fg">
+        6+ tahun membangun dan mengoptimalkan sistem untuk bisnis — dari perbankan, distribusi
+        properti, hingga SaaS — bersama tim seperti
+        <span class="font-medium">Bank Raya, Redawning, dan Penerid Solusi Indonesia.</span>
+      </p>
+    </div>
   </section>
 
   <section id="layanan" class="mt-20 scroll-mt-24 @container" aria-labelledby="h-layanan">

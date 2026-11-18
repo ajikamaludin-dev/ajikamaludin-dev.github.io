@@ -19,7 +19,13 @@ const softwareLd = {
   inLanguage: "id",
   description:
     "Aplikasi kasir Android offline untuk warung dan UMKM: penjualan, stok, dan uang masuk–keluar di satu aplikasi. Gratis, tanpa langganan, open source GPL-3.0.",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "IDR" },
+  installUrl: intikasirDownloadUrl,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "IDR",
+    url: intikasirDownloadUrl,
+  },
   author: { "@type": "Person", name: profile.name, url: profile.site },
 };
 
