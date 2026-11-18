@@ -1,15 +1,15 @@
 ---
-import IntikasirLegalLayout from "../../layouts/IntikasirLegalLayout.astro";
+import DotkasirLegalLayout from "../../layouts/DotkasirLegalLayout.astro";
 ---
 
-<IntikasirLegalLayout
-  title="Kebijakan Privasi Intikasir"
-  description="Kebijakan privasi aplikasi kasir Android Intikasir: data tersimpan lokal di perangkat, tidak ada server pengembang, telemetri Firebase terbatas yang dapat dimatikan, dan backup di akun Google pengguna sendiri."
+<DotkasirLegalLayout
+  title="Kebijakan Privasi Dotkasir"
+  description="Kebijakan privasi aplikasi kasir Android Dotkasir: data tersimpan lokal di perangkat, tidak ada server pengembang, telemetri Firebase terbatas yang dapat dimatikan, dan backup di akun Google pengguna sendiri."
   updated="16 November 2026"
 >
   <p>
-    Kebijakan ini menjelaskan bagaimana aplikasi <strong>Intikasir</strong> menangani data pengguna.
-    Intikasir adalah aplikasi kasir Android untuk warung dan usaha kecil, berjalan offline, dan
+    Kebijakan ini menjelaskan bagaimana aplikasi <strong>Dotkasir</strong> menangani data pengguna.
+    Dotkasir adalah aplikasi kasir Android untuk warung dan usaha kecil, berjalan offline, dan
     dirilis sebagai perangkat lunak open source di bawah lisensi GPL-3.0.
   </p>
 
@@ -17,7 +17,7 @@ import IntikasirLegalLayout from "../../layouts/IntikasirLegalLayout.astro";
 
   <ul>
     <li>
-      Intikasir <strong>tidak memiliki server/backend</strong> dan <strong>tidak mengirim data usaha
+      Dotkasir <strong>tidak memiliki server/backend</strong> dan <strong>tidak mengirim data usaha
       pengguna ke pengembang</strong>. Satu-satunya pengiriman adalah telemetri terbatas ke Firebase
       (lihat §9), yang dapat dimatikan dan tidak berisi data usaha.
     </li>
@@ -27,7 +27,7 @@ import IntikasirLegalLayout from "../../layouts/IntikasirLegalLayout.astro";
       file disimpan di ruang aplikasi pada akun Google pengguna sendiri.
     </li>
     <li>
-      Tidak ada akun Intikasir, iklan, atau pelacakan untuk iklan. Aplikasi mengirim{" "}
+      Tidak ada akun Dotkasir, iklan, atau pelacakan untuk iklan. Aplikasi mengirim{" "}
       <strong>telemetri terbatas</strong> ke Google Firebase (crash report, statistik agregat harian, dan
       trace performa teknis) <strong>hanya saat perangkat online</strong>; aplikasi{" "}
       <strong>tetap 100% berfungsi saat offline</strong>, dan telemetri dapat dimatikan di Pengaturan.
@@ -53,7 +53,7 @@ import IntikasirLegalLayout from "../../layouts/IntikasirLegalLayout.astro";
   </ul>
 
   <p>
-    Aplikasi tidak meminta nama, email, nomor telepon, atau akun Intikasir. Nomor HP
+    Aplikasi tidak meminta nama, email, nomor telepon, atau akun Dotkasir. Nomor HP
     pelanggan/supplier hanya disimpan jika pengguna mengisinya sendiri.
   </p>
 
@@ -156,7 +156,7 @@ import IntikasirLegalLayout from "../../layouts/IntikasirLegalLayout.astro";
   <h2>9. Telemetri Firebase (Crash Reporting, Statistik Agregat &amp; Performa)</h2>
 
   <p>
-    Sejak Draft PRD v0.72 (Performance Monitoring sejak Draft v0.73), Intikasir mengirim{" "}
+    Sejak Draft PRD v0.72 (Performance Monitoring sejak Draft v0.73), Dotkasir mengirim{" "}
     <strong>telemetri terbatas</strong> ke Google Firebase (kebijakan privasi Google berlaku){" "}
     <strong>hanya saat perangkat terhubung ke internet</strong>. Pengiriman bersifat{" "}
     <strong>best-effort</strong>: seluruh fitur kasir tetap berfungsi penuh tanpa internet, dan
@@ -232,7 +232,7 @@ import IntikasirLegalLayout from "../../layouts/IntikasirLegalLayout.astro";
   <h2>12. Anak-Anak</h2>
 
   <p>
-    Intikasir ditujukan untuk pelaku usaha dan bukan untuk anak-anak. Aplikasi tidak dengan sengaja
+    Dotkasir ditujukan untuk pelaku usaha dan bukan untuk anak-anak. Aplikasi tidak dengan sengaja
     mengumpulkan data anak-anak.
   </p>
 
@@ -246,7 +246,7 @@ import IntikasirLegalLayout from "../../layouts/IntikasirLegalLayout.astro";
   <h2>14. Kontak</h2>
 
   <p>
-    Intikasir dikembangkan secara perorangan; tidak ada badan usaha atau alamat fisik yang dipublikasikan.
+    Dotkasir dikembangkan secara perorangan; tidak ada badan usaha atau alamat fisik yang dipublikasikan.
   </p>
 
   <p>Pertanyaan tentang kebijakan ini dapat disampaikan melalui:</p>
@@ -261,4 +261,4 @@ import IntikasirLegalLayout from "../../layouts/IntikasirLegalLayout.astro";
     <li>Waktu respons: maksimal <strong>7 hari kerja</strong></li>
     <li>Repositori publik: tautan akan dicantumkan pada halaman Tentang Aplikasi dan listing Google Play</li>
   </ul>
-</IntikasirLegalLayout>
+</DotkasirLegalLayout>

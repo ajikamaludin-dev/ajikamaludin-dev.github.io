@@ -84,8 +84,8 @@ personal-profile/
 │   │   ├── experience.ts       # riwayat kerja + pendidikan
 │   │   ├── skills.ts
 │   │   ├── certifications.ts   # 24 sertifikasi + pencapaian
-│   │   └── products.ts         # KasirAja + Intikasir + tautan lain
-│   ├── layouts/                # BaseLayout, PostLayout, IntikasirLegalLayout
+│   │   └── products.ts         # KasirAja + Dotkasir + tautan lain
+│   ├── layouts/                # BaseLayout, PostLayout, DotkasirLegalLayout
 │   ├── pages/
 │   │   ├── index.astro
 │   │   ├── about.astro         # termasuk Keahlian & Tautan Lain
@@ -96,10 +96,10 @@ personal-profile/
 │   │   │   ├── index.astro
 │   │   │   └── [...slug].astro
 │   │   ├── products/index.astro
-│   │   ├── intikasir/
-│   │   │   ├── index.astro     # publicity Intikasir (aplikasi kasir Android)
-│   │   │   ├── syarat-dan-ketentuan.astro  # port dari docs/DISCLAIMER.md (inti-kasir)
-│   │   │   └── kebijakan-privasi.astro     # port dari docs/PRIVACY.md (inti-kasir)
+│   │   ├── dotkasir/
+│   │   │   ├── index.astro     # publicity Dotkasir (aplikasi kasir Android)
+│   │   │   ├── syarat-dan-ketentuan.astro  # port dari docs/DISCLAIMER.md (dot-kasir)
+│   │   │   └── kebijakan-privasi.astro     # port dari docs/PRIVACY.md (dot-kasir)
 │   │   └── rss.xml.ts
 │   ├── styles/global.css       # @theme token + .prose + hero glass
 │   └── utils/date.ts
@@ -124,16 +124,16 @@ personal-profile/
 
 | URL                | Isi                                                                | Sumber data                   |
 | ------------------ | ------------------------------------------------------------------ | ----------------------------- |
-| `/`                | Hero konsultan, statistik bukti, layanan, proses, case study Intikasir, pengalaman, CTA konsultasi | `consulting.ts`, `profile.ts`, `experience.ts`, `products.ts` |
+| `/`                | Hero konsultan, statistik bukti, layanan, proses, case study Dotkasir, pengalaman, CTA konsultasi | `consulting.ts`, `profile.ts`, `experience.ts`, `products.ts` |
 | `/about`           | Cerita, pendidikan, keahlian, sertifikasi, pencapaian, tautan lain | semua `data/*.ts`             |
 | `/blog`            | Indeks artikel + pencarian Pagefind                                | `content/blog/`               |
 | `/blog/[slug]`     | Artikel                                                            | `content/blog/`               |
 | `/projects`        | Kosong — belum ada project                                         | `content/projects/`           |
 | `/projects/[slug]` | Detail project (hanya dibangun kalau ada entry)                    | `content/projects/`           |
-| `/products`        | Produk & SaaS (KasirAja, Intikasir)                               | `data/products.ts`            |
-| `/intikasir`       | Publicity Intikasir — kasir offline untuk warung & UMKM            | konten statis (hardcode)      |
-| `/intikasir/syarat-dan-ketentuan` | Syarat dan ketentuan Intikasir              | port `docs/DISCLAIMER.md`     |
-| `/intikasir/kebijakan-privasi`    | Kebijakan privasi Intikasir                  | port `docs/PRIVACY.md`        |
+| `/products`        | Produk & SaaS (KasirAja, Dotkasir)                               | `data/products.ts`            |
+| `/dotkasir`       | Publicity Dotkasir — kasir offline untuk warung & UMKM            | konten statis (hardcode)      |
+| `/dotkasir/syarat-dan-ketentuan` | Syarat dan ketentuan Dotkasir              | port `docs/DISCLAIMER.md`     |
+| `/dotkasir/kebijakan-privasi`    | Kebijakan privasi Dotkasir                  | port `docs/PRIVACY.md`        |
 | `/rss.xml`         | Feed                                                               | `@astrojs/rss`                |
 
 Navigasi: Tentang · Blog · Proyek · Produk · **Konsultasi** (eksternal ke `wa.me`).
@@ -181,7 +181,7 @@ Frontmatter project mengharuskan `pubDate` untuk pengurutan. **Isi dengan tangga
 
 Edit `src/data/products.ts`. Produk berbeda dari project: produk = sesuatu yang dipakai orang lain secara nyata (ada pengguna, ada nilai), project = eksperimen atau case study.
 
-Sumber konten Intikasir: repo `inti-kasir` (`PLAY_STORE.md`, `PRD.md`, `docs/DISCLAIMER.md`, `docs/PRIVACY.md`). Intikasir sudah rilis di Google Play (status `live`) — CTA download memakai satu konstanta `intikasirDownloadUrl` di `products.ts`.
+Sumber konten Dotkasir: repo `dot-kasir` (`PLAY_STORE.md`, `PRD.md`, `docs/DISCLAIMER.md`, `docs/PRIVACY.md`). Dotkasir sudah rilis di Google Play (status `live`) — CTA download memakai satu konstanta `dotkasirDownloadUrl` di `products.ts`.
 
 ---
 

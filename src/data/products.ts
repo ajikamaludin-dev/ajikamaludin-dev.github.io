@@ -18,11 +18,11 @@ export interface Product {
   stack: string[];
 }
 
-/** Tagline resmi — sumber: docs/PRD.md (Intikasir). Dipakai lintas halaman. */
-export const intikasirTagline = "Jualan rapi, usaha tenang";
+/** Tagline resmi — sumber: docs/PRD.md (Dotkasir). Dipakai lintas halaman. */
+export const dotkasirTagline = "Jualan rapi, usaha tenang";
 
-/** Tujuan CTA download Intikasir — Play Store resmi (sudah rilis). */
-export const intikasirDownloadUrl =
+/** Tujuan CTA download Dotkasir — Play Store resmi (sudah rilis). */
+export const dotkasirDownloadUrl =
   "https://play.google.com/store/apps/details?id=id.ajikamaludin.intikasir";
 
 /**
@@ -34,9 +34,9 @@ export const intikasirDownloadUrl =
  */
 export const products: Product[] = [
   {
-    slug: "intikasir",
-    name: "Intikasir",
-    tagline: intikasirTagline,
+    slug: "dotkasir",
+    name: "Dotkasir",
+    tagline: dotkasirTagline,
     status: "live",
     description:
       "Aplikasi kasir Android offline untuk warung dan UMKM Indonesia: penjualan, stok, " +
@@ -51,8 +51,8 @@ export const products: Product[] = [
       "100% offline — backup lokal atau Google Drive (opsional)",
     ],
     links: [
-      { label: "Kenali Intikasir", url: "/intikasir/" },
-      { label: "Download di Google Play", url: intikasirDownloadUrl },
+      { label: "Kenali Dotkasir", url: "/dotkasir/" },
+      { label: "Download di Google Play", url: dotkasirDownloadUrl },
     ],
     stack: ["Flutter", "Dart", "SQLite"],
   },

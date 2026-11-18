@@ -1,30 +1,30 @@
 ---
 import { Image } from "astro:assets";
-import logo from "../../assets/intikasir/logo.png";
-import stepKasir from "../../assets/intikasir/02-pos-kasir.jpg";
-import stepQris from "../../assets/intikasir/03-pembayaran-qris.jpg";
-import stepStruk from "../../assets/intikasir/04-struk-pdf.jpg";
+import logo from "../../assets/dotkasir/logo.png";
+import stepKasir from "../../assets/dotkasir/02-pos-kasir.jpg";
+import stepQris from "../../assets/dotkasir/03-pembayaran-qris.jpg";
+import stepStruk from "../../assets/dotkasir/04-struk-pdf.jpg";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { profile } from "../../data/profile.ts";
-import { intikasirDownloadUrl, intikasirTagline } from "../../data/products.ts";
+import { dotkasirDownloadUrl, dotkasirTagline } from "../../data/products.ts";
 
 const email = profile.contacts.email;
 
 const softwareLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "Intikasir",
+  name: "Dotkasir",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Android",
   inLanguage: "id",
   description:
     "Aplikasi kasir Android offline untuk warung dan UMKM: penjualan, stok, dan uang masuk–keluar di satu aplikasi. Gratis, tanpa langganan, open source GPL-3.0.",
-  installUrl: intikasirDownloadUrl,
+  installUrl: dotkasirDownloadUrl,
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "IDR",
-    url: intikasirDownloadUrl,
+    url: dotkasirDownloadUrl,
   },
   author: { "@type": "Person", name: profile.name, url: profile.site },
 };
@@ -41,19 +41,19 @@ const langkah = [
     title: "Pilih barang, tekan bayar",
     body: "Cari produk atau scan barcode dengan kamera HP. Kembalian dihitung otomatis dan stok langsung terpotong.",
     image: stepKasir,
-    alt: "Layar kasir Intikasir di HP: Beras Premium, Gula Pasir, dan Minyak Goreng ada di keranjang dengan total Rp 116.000 dan tombol Bayar.",
+    alt: "Layar kasir Dotkasir di HP: Beras Premium, Gula Pasir, dan Minyak Goreng ada di keranjang dengan total Rp 116.000 dan tombol Bayar.",
   },
   {
     title: "Tunjukkan QRIS atau terima tunai",
     body: "Pembayaran tunai dan QRIS langsung tersedia. Cara bayar lain bisa dinyalakan kalau usaha Anda butuh.",
     image: stepQris,
-    alt: "Layar pembayaran Intikasir dengan metode QRIS dipilih; kode QR statis tampil bersama tombol Perbesar QRIS untuk Pelanggan.",
+    alt: "Layar pembayaran Dotkasir dengan metode QRIS dipilih; kode QR statis tampil bersama tombol Perbesar QRIS untuk Pelanggan.",
   },
   {
     title: "Struk jadi, catatan rapi",
     body: "Bagikan struk PDF lewat WhatsApp atau cetak ke printer Bluetooth. Penjualan dan stok sudah tercatat dengan sendirinya.",
     image: stepStruk,
-    alt: "Detail transaksi INV-20261118-0007 di Intikasir dengan tombol Bagikan PDF dan Cetak Struk.",
+    alt: "Detail transaksi INV-20261118-0007 di Dotkasir dengan tombol Bagikan PDF dan Cetak Struk.",
   },
 ];
 
@@ -86,28 +86,28 @@ const manfaat = [
 
 const faqs = [
   {
-    q: "Apakah Intikasir butuh internet?",
+    q: "Apakah Dotkasir butuh internet?",
     a: "Tidak. Operasional kasir 100% offline — jual, cetak struk, cek stok, dan lihat laporan bisa tanpa sinyal. Internet hanya dipakai untuk backup Google Drive (opsional) dan telemetri terbatas yang bisa dimatikan di Pengaturan.",
   },
   {
     q: "Berapa biayanya?",
-    a: "Gratis. Tidak ada langganan, iklan, atau pembelian dalam aplikasi. Intikasir open source di bawah lisensi GPL-3.0 — kode sumbernya bisa Anda baca dan audit.",
+    a: "Gratis. Tidak ada langganan, iklan, atau pembelian dalam aplikasi. Dotkasir open source di bawah lisensi GPL-3.0 — kode sumbernya bisa Anda baca dan audit.",
   },
   {
     q: "Di mana data usaha saya disimpan?",
-    a: "Di perangkat Anda sendiri. Tidak ada server Intikasir dan pengembang tidak bisa melihat data Anda. Backup hanya berjalan saat Anda menekan tombol backup, dan file backup disimpan di akun Google Anda (opsional) atau file lokal. Ingat: database dan file backup tidak dienkripsi — jaga perangkat dan akun Google Anda.",
+    a: "Di perangkat Anda sendiri. Tidak ada server Dotkasir dan pengembang tidak bisa melihat data Anda. Backup hanya berjalan saat Anda menekan tombol backup, dan file backup disimpan di akun Google Anda (opsional) atau file lokal. Ingat: database dan file backup tidak dienkripsi — jaga perangkat dan akun Google Anda.",
   },
   {
-    q: "Di mana saya bisa mengunduh Intikasir?",
-    a: "Intikasir sudah tersedia di Google Play. Klik tombol \"Download di Google Play\" di halaman ini untuk memasangnya langsung di perangkat Android Anda.",
+    q: "Di mana saya bisa mengunduh Dotkasir?",
+    a: "Dotkasir sudah tersedia di Google Play. Klik tombol \"Download di Google Play\" di halaman ini untuk memasangnya langsung di perangkat Android Anda.",
   },
   {
-    q: "Apakah laporan Intikasir bisa dipakai untuk pajak atau audit?",
+    q: "Apakah laporan Dotkasir bisa dipakai untuk pajak atau audit?",
     a: "Tidak. Laporan laba/rugi adalah estimasi sederhana (bukan akuntansi resmi) dan tidak ditujukan untuk audit atau pelaporan pajak. Untuk keperluan itu, konsultasikan dengan akuntan.",
   },
   {
     q: "Bisa dipakai karyawan atau kasir lain?",
-    a: "Belum. Versi pertama Intikasir dipakai oleh satu pemilik sekaligus kasir — belum ada akun atau hak akses terpisah untuk karyawan.",
+    a: "Belum. Versi pertama Dotkasir dipakai oleh satu pemilik sekaligus kasir — belum ada akun atau hak akses terpisah untuk karyawan.",
   },
   {
     q: "Bisa buat struk tanpa printer?",
@@ -117,16 +117,16 @@ const faqs = [
 ---
 
 <BaseLayout
-  title="Intikasir — Kasir offline untuk warung & UMKM"
+  title="Dotkasir — Kasir offline untuk warung & UMKM"
   description="Aplikasi kasir Android untuk warung dan usaha kecil: penjualan, stok, uang masuk–keluar — 100% offline, tanpa langganan, gratis, open source GPL-3.0."
 >
-  <div class="inti-page @container">
+  <div class="dot-page @container">
     <section class="flex flex-col gap-8 @md:flex-row @md:items-center">
       <div class="shrink-0">
         <div class="w-fit rounded-2xl bg-white p-3 ring-1 ring-border-subtle">
           <Image
             src={logo}
-            alt="Logo Intikasir — huruf K hitam dengan titik merah"
+            alt="Logo Dotkasir — huruf K hitam dengan titik merah"
             width={112}
             height={112}
             class="h-28 w-28"
@@ -136,7 +136,7 @@ const faqs = [
       </div>
       <div>
         <p class="flex items-center gap-2 text-sm font-medium text-fg">
-          <span aria-hidden="true" class="h-2 w-2 shrink-0 rounded-full bg-inti-red"></span>
+          <span aria-hidden="true" class="h-2 w-2 shrink-0 rounded-full bg-dot-red"></span>
           Aplikasi kasir Android · Tersedia di Google Play
         </p>
         <h1
@@ -145,7 +145,7 @@ const faqs = [
           Kasir warung yang jalan tanpa sinyal
         </h1>
         <p class="mt-3 text-[clamp(1.1rem,1.7vw,1.3rem)] font-medium text-accent">
-          {intikasirTagline}.
+          {dotkasirTagline}.
         </p>
         <p class="mt-4 max-w-[58ch] text-[clamp(1.02rem,1.5vw,1.2rem)] leading-relaxed text-fg-muted">
           Catat penjualan, stok, dan uang masuk–keluar dari satu aplikasi. Tanpa langganan, tanpa
@@ -153,7 +153,7 @@ const faqs = [
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a
-            href={intikasirDownloadUrl}
+            href={dotkasirDownloadUrl}
             rel="noopener"
             target="_blank"
             class="inline-flex min-h-11 items-center justify-center rounded-md bg-accent px-5 text-[15px] font-medium text-surface transition-opacity duration-150 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
@@ -176,7 +176,7 @@ const faqs = [
         Cocok untuk siapa?
       </h2>
       <p class="mt-3 text-[15px] leading-relaxed text-fg-muted">
-        Kalau ini kebiasaan di usaha Anda, Intikasir dibuat untuk Anda.
+        Kalau ini kebiasaan di usaha Anda, Dotkasir dibuat untuk Anda.
       </p>
       <ul class="mt-6 grid gap-3 @sm:grid-cols-2">
         {cocokUntuk.map((item) => (
@@ -253,7 +253,7 @@ const faqs = [
           Jujur soal batasannya: laporan laba/rugi hanya estimasi, dan database serta file backup
           belum dienkripsi. Detailnya di{" "}
           <a
-            href="/intikasir/syarat-dan-ketentuan/"
+            href="/dotkasir/syarat-dan-ketentuan/"
             class="text-accent underline-offset-4 hover:underline"
           >
             Syarat dan Ketentuan
@@ -291,12 +291,12 @@ const faqs = [
         Mulai pakai sekarang
       </h2>
       <p class="mt-3 max-w-[62ch] leading-relaxed text-fg-muted">
-        Intikasir sudah tersedia di Google Play. Klik tombol di bawah untuk memasangnya di perangkat
+        Dotkasir sudah tersedia di Google Play. Klik tombol di bawah untuk memasangnya di perangkat
         Android Anda, atau tanya lewat email kalau ada pertanyaan.
       </p>
       <div class="mt-6 flex flex-wrap gap-3">
         <a
-          href={intikasirDownloadUrl}
+          href={dotkasirDownloadUrl}
           rel="noopener"
           target="_blank"
           class="inline-flex min-h-11 items-center justify-center rounded-md bg-accent px-5 text-[15px] font-medium text-surface transition-opacity duration-150 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
@@ -312,9 +312,9 @@ const faqs = [
       </div>
       <p class="mt-6 text-sm text-fg-muted">
         Dokumen legal:{" "}
-        <a href="/intikasir/syarat-dan-ketentuan/" class="text-accent underline-offset-4 hover:underline">Syarat dan Ketentuan</a>
+        <a href="/dotkasir/syarat-dan-ketentuan/" class="text-accent underline-offset-4 hover:underline">Syarat dan Ketentuan</a>
         {" "}·{" "}
-        <a href="/intikasir/kebijakan-privasi/" class="text-accent underline-offset-4 hover:underline">Kebijakan Privasi</a>
+        <a href="/dotkasir/kebijakan-privasi/" class="text-accent underline-offset-4 hover:underline">Kebijakan Privasi</a>
       </p>
     </section>
 

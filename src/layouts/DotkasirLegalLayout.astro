@@ -11,8 +11,8 @@ interface Props {
 const { title, description, updated } = Astro.props;
 
 const legalLinks = [
-  { href: "/intikasir/syarat-dan-ketentuan/", label: "Syarat dan Ketentuan" },
-  { href: "/intikasir/kebijakan-privasi/", label: "Kebijakan Privasi" },
+  { href: "/dotkasir/syarat-dan-ketentuan/", label: "Syarat dan Ketentuan" },
+  { href: "/dotkasir/kebijakan-privasi/", label: "Kebijakan Privasi" },
 ];
 ---
 
@@ -20,10 +20,10 @@ const legalLinks = [
   <article>
     <header class="max-w-[68ch]">
       <a
-        href="/intikasir/"
+        href="/dotkasir/"
         class="inline-flex min-h-11 items-center gap-2 text-sm text-fg-muted underline-offset-4 transition-colors duration-150 hover:text-fg hover:underline"
       >
-        <span aria-hidden="true">←</span> Tentang Intikasir
+        <span aria-hidden="true">←</span> Tentang Dotkasir
       </a>
       <h1
         class="mt-4 text-[clamp(1.85rem,4.5vw,2.75rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-balance"
@@ -32,7 +32,7 @@ const legalLinks = [
       </h1>
       <p class="mt-4 text-sm leading-relaxed text-fg-muted">
         Terakhir diperbarui: <span class="font-mono tabular-nums">{updated}</span>.
-        Dokumen ini berlaku efektif sejak Intikasir dirilis publik di Google Play.
+        Dokumen ini berlaku efektif sejak Dotkasir dirilis publik di Google Play.
       </p>
     </header>
 
@@ -41,7 +41,7 @@ const legalLinks = [
     </div>
 
     <nav
-      aria-label="Dokumen legal Intikasir"
+      aria-label="Dokumen legal Dotkasir"
       class="mt-14 flex flex-wrap gap-x-6 gap-y-2 border-t border-border-subtle pt-6 text-sm"
     >
       {

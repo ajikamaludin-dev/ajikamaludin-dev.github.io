@@ -3,13 +3,13 @@ import { getCollection } from "astro:content";
 import { consultingCopy, engagementModel, processSteps, services } from "../data/consulting.ts";
 import { experience } from "../data/experience.ts";
 import { portfolio, portfolioSheetUrl } from "../data/portfolio.ts";
-import { intikasirDownloadUrl, products } from "../data/products.ts";
+import { dotkasirDownloadUrl, products } from "../data/products.ts";
 import { profile, whatsappUrl } from "../data/profile.ts";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { formatPublishedDate, formatRange } from "../utils/date.ts";
 
 const recent = experience.slice(0, 3);
-const intikasir = products.find((p) => p.slug === "intikasir");
+const dotkasir = products.find((p) => p.slug === "dotkasir");
 const consultationUrl = whatsappUrl(consultingCopy.consultationMessage);
 
 const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort(
@@ -19,7 +19,7 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
 
 <BaseLayout
   title="Konsultan MVP & Pengembang Aplikasi untuk UMKM & Startup — Aji Kamaludin"
-  description="Konsultan MVP & pengembang aplikasi untuk UMKM dan startup — dari discovery sampai rilis. Juga pembuat Intikasir, kasir Android gratis untuk warung."
+  description="Konsultan MVP & pengembang aplikasi untuk UMKM dan startup — dari discovery sampai rilis. Juga pembuat Dotkasir, kasir Android gratis untuk warung."
 >
   <section class="relative isolate -mt-14 left-1/2 w-screen -translate-x-1/2 overflow-hidden sm:-mt-16">
     <div class="hero-gradient absolute inset-0" aria-hidden="true"></div>
@@ -127,8 +127,8 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
   </section>
 
   {
-    intikasir && (
-      <section class="mt-20 @container" aria-labelledby="rilis-intikasir">
+    dotkasir && (
+      <section class="mt-20 @container" aria-labelledby="rilis-dotkasir">
         <div class="rounded-3xl border border-border-subtle bg-surface-raised p-6 sm:p-8">
           <div class="flex flex-col gap-6 @md:flex-row @md:items-center @md:justify-between">
             <div class="min-w-0">
@@ -142,13 +142,13 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
                 </span>
               </p>
               <h2
-                id="rilis-intikasir"
+                id="rilis-dotkasir"
                 class="mt-3 text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.01em]"
               >
-                {intikasir.name}
+                {dotkasir.name}
               </h2>
               <p class="mt-1 text-[clamp(1.05rem,1.7vw,1.25rem)] font-medium text-accent">
-                {intikasir.tagline}
+                {dotkasir.tagline}
               </p>
               <p class="mt-3 max-w-[58ch] text-[15px] leading-relaxed text-fg-muted">
                 Aplikasi kasir Android offline — dari riset kebutuhan, desain, pengembangan, sampai
@@ -157,7 +157,7 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
             </div>
             <div class="flex shrink-0 flex-wrap gap-3">
               <a
-                href={intikasirDownloadUrl}
+                href={dotkasirDownloadUrl}
                 target="_blank"
                 rel="noopener"
                 class="inline-flex min-h-11 items-center rounded-md bg-accent px-5 text-[15px] font-medium text-surface transition-opacity duration-150 hover:opacity-90"
@@ -165,10 +165,10 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
                 Download di Google Play
               </a>
               <a
-                href="/intikasir/"
+                href="/dotkasir/"
                 class="inline-flex min-h-11 items-center rounded-md border border-border-control px-5 text-[15px] text-fg transition-colors duration-150 hover:border-accent hover:text-accent"
               >
-                Kenali Intikasir
+                Kenali Dotkasir
               </a>
             </div>
           </div>
