@@ -21,54 +21,56 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
   title="Konsultan MVP & Pengembang Aplikasi untuk UMKM & Startup — Aji Kamaludin"
   description="Konsultan MVP & pengembang aplikasi untuk UMKM dan startup — dari discovery sampai rilis. Juga pembuat Intikasir, kasir Android gratis untuk warung."
 >
-  <section class="relative isolate overflow-hidden rounded-3xl">
+  <section class="relative isolate left-1/2 w-screen -translate-x-1/2 overflow-hidden">
     <div class="hero-gradient absolute inset-0" aria-hidden="true"></div>
 
-    <div
-      class="hero-glass relative grid gap-8 p-6 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-12 sm:p-10"
-    >
-      <div class="min-w-0">
-        <p class="font-mono text-[11px] uppercase tracking-wider text-accent">
-          {consultingCopy.eyebrow}
-        </p>
+    <div class="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+      <div
+        class="hero-glass grid gap-8 rounded-3xl p-6 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-12 sm:p-10"
+      >
+        <div class="min-w-0">
+          <p class="font-mono text-[11px] uppercase tracking-wider text-accent">
+            {profile.name} — {consultingCopy.eyebrow}
+          </p>
 
-        <h1
-          class="mt-4 text-[clamp(2.25rem,7.5vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-balance"
-        >
-          {consultingCopy.headline}
-        </h1>
-
-        <p class="mt-5 max-w-[56ch] text-[clamp(1rem,1.6vw,1.15rem)] leading-relaxed text-fg-muted">
-          {consultingCopy.subheadline}
-        </p>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a
-            href={consultationUrl}
-            target="_blank"
-            rel="noopener"
-            class="inline-flex min-h-11 items-center rounded-md bg-accent px-5 text-[15px] font-medium text-surface transition-opacity duration-150 hover:opacity-90"
+          <h1
+            class="mt-4 text-[clamp(2.25rem,7.5vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-balance"
           >
-            {consultingCopy.ctaPrimary}
-          </a>
-          <a
-            href="#layanan"
-            class="inline-flex min-h-11 items-center rounded-md border border-border-control px-5 text-[15px] text-fg transition-colors duration-150 hover:border-accent hover:text-accent"
-          >
-            {consultingCopy.ctaSecondary}
-          </a>
+            {consultingCopy.headline}
+          </h1>
+
+          <p class="mt-5 max-w-[56ch] text-[clamp(1rem,1.6vw,1.15rem)] leading-relaxed text-fg-muted">
+            {consultingCopy.subheadline}
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a
+              href={consultationUrl}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex min-h-11 items-center rounded-md bg-accent px-5 text-[15px] font-medium text-surface transition-opacity duration-150 hover:opacity-90"
+            >
+              {consultingCopy.ctaPrimary}
+            </a>
+            <a
+              href="#layanan"
+              class="inline-flex min-h-11 items-center rounded-md border border-border-control px-5 text-[15px] text-fg transition-colors duration-150 hover:border-accent hover:text-accent"
+            >
+              {consultingCopy.ctaSecondary}
+            </a>
+          </div>
         </div>
-      </div>
 
-      <img
-        src={profile.avatar}
-        alt="Foto profil Aji Kamaludin, konsultan MVP dan pengembang aplikasi"
-        width="160"
-        height="160"
-        loading="eager"
-        fetchpriority="high"
-        class="h-28 w-28 shrink-0 rounded-full object-cover ring-1 ring-border-control sm:h-40 sm:w-40"
-      />
+        <img
+          src={profile.avatar}
+          alt="Foto profil Aji Kamaludin, konsultan MVP dan pengembang aplikasi"
+          width="176"
+          height="176"
+          loading="eager"
+          fetchpriority="high"
+          class="h-28 w-28 shrink-0 rounded-full object-cover ring-1 ring-border-control sm:h-44 sm:w-44"
+        />
+      </div>
     </div>
   </section>
 
@@ -200,7 +202,7 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
       role="region"
       aria-label="Daftar karya — geser ke samping untuk melihat semua"
       tabindex="0"
-      class="mt-8 flex gap-4 overflow-x-auto pb-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      class="mt-8 flex cursor-grab gap-4 overflow-x-auto pb-4 [&:active]:cursor-grabbing focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
       {
         portfolio.map((item) => (
@@ -390,6 +392,57 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
       track.addEventListener("pointerleave", resume);
       track.addEventListener("focusin", pause);
       track.addEventListener("focusout", resume);
+
+      // Click-and-drag: geser dengan mouse, tapi jangan menahan klik pada tautan.
+      let dragging = false;
+      let startX = 0;
+      let startScroll = 0;
+      let moved = false;
+
+      track.addEventListener("pointerdown", (e) => {
+        if (e.pointerType !== "mouse" || e.button !== 0) return;
+        dragging = true;
+        moved = false;
+        startX = e.clientX;
+        startScroll = track.scrollLeft;
+      });
+
+      track.addEventListener("pointermove", (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 4) {
+          moved = true;
+          paused = true;
+          track.scrollLeft = startScroll - dx;
+        }
+      });
+
+      const endDrag = () => {
+        if (!dragging) return;
+        dragging = false;
+        // Beri jalan ke klik normal kalau tidak ada drag; lanjut auto-scroll kalau ada drag.
+        if (moved) {
+          window.setTimeout(() => {
+            paused = false;
+          }, 120);
+        }
+      };
+
+      track.addEventListener("pointerup", endDrag);
+      track.addEventListener("pointercancel", endDrag);
+      track.addEventListener("pointerleave", endDrag);
+
+      // Cegah klik tautan saat sedang drag.
+      track.addEventListener(
+        "click",
+        (e) => {
+          if (moved) {
+            e.preventDefault();
+            moved = false;
+          }
+        },
+        true,
+      );
 
       // Hentikan loop saat halaman tidak terlihat untuk hemat daya.
       document.addEventListener("visibilitychange", () => {

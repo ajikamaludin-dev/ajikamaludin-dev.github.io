@@ -52,6 +52,8 @@
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    /* clip, bukan hidden: tidak membuat scroll container, jadi nav sticky tetap bekerja. */
+    overflow-x: clip;
   }
 
   body {
