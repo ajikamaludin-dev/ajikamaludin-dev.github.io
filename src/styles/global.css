@@ -23,6 +23,11 @@
   /* Batas kontrol (WCAG 1.4.11 ≥3:1). `border-subtle` hanya untuk divider dekoratif. */
   --color-border-control: oklch(0.58 0.012 250);
 
+  /* Brand Intikasir — PRD v0.64. Hex dipakai apa adanya supaya persis dengan
+     palet aplikasi. Hanya dipakai di halaman /intikasir lewat `.inti-page`. */
+  --color-inti-navy: #1e3a8a;
+  --color-inti-red: #ed1c24;
+
   --radius-card: 0.5rem;
   --spacing-gutter: 1.5rem;
 }
@@ -35,6 +40,9 @@
 
   --color-accent-400: oklch(0.78 0.11 205);
   --color-accent: oklch(0.78 0.11 205);
+
+  --color-inti-navy: #93c5fd;
+  --color-inti-red: #ff4d52;
 
   --color-border-subtle: oklch(0.31 0.008 250);
   --color-border-control: oklch(0.52 0.01 250);
@@ -271,6 +279,14 @@
   .prose th {
     background: var(--color-surface-raised);
     font-weight: 600;
+  }
+
+  /* Intikasir: palet aplikasi dipakai HANYA di halaman /intikasir.
+     `var()` di sini di-resolve terhadap override `.dark` di root, jadi satu
+     aturan cukup untuk skema terang dan gelap. */
+  .inti-page {
+    --color-accent: var(--color-inti-navy);
+    --color-accent-400: var(--color-inti-navy);
   }
 }
 

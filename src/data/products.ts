@@ -22,6 +22,14 @@ export interface Product {
 export const intikasirTagline = "Jualan rapi, usaha tenang";
 
 /**
+ * Tujuan CTA download Intikasir. Sementara ini WhatsApp (dummy) sampai rilis
+ * Google Play. Saat URL Play Store final, ganti SATU baris ini saja.
+ */
+export const intikasirDownloadUrl = `https://wa.me/${profile.contacts.whatsapp}?text=${encodeURIComponent(
+  "Halo, saya mau download Intikasir di Google Play. Kabari ya kalau sudah tersedia.",
+)}`;
+
+/**
  * Produk = sesuatu yang dipakai orang lain secara nyata.
  * Project/demo yang bukan produk masuk ke `src/content/projects/`.
  *
@@ -48,7 +56,7 @@ export const products: Product[] = [
     ],
     links: [
       { label: "Kenali Intikasir", url: "/intikasir/" },
-      { label: "WhatsApp", url: "https://wa.me/6281325307692" },
+      { label: "Tanya rilis via WhatsApp", url: intikasirDownloadUrl },
     ],
     stack: ["Flutter", "Dart", "SQLite"],
   },
