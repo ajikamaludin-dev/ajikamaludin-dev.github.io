@@ -1,12 +1,14 @@
 ---
 import { getCollection } from "astro:content";
 import { experience } from "../data/experience.ts";
+import { intikasirDownloadUrl, products } from "../data/products.ts";
 import { navLinks, profile } from "../data/profile.ts";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { formatPublishedDate, formatRange } from "../utils/date.ts";
 
 const recent = experience.slice(0, 3);
 const summaryHref = navLinks.find((l) => l.label === "Projects")?.href ?? "/projects/";
+const intikasir = products.find((p) => p.slug === "intikasir");
 
 const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
@@ -91,6 +93,57 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
                 {latestPost.data.pubTime ? ` · ${latestPost.data.pubTime} WIB` : ""}
               </time>
             </p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    intikasir && (
+      <section class="mt-12 @container" aria-labelledby="rilis-intikasir">
+        <div class="rounded-3xl border border-border-subtle bg-surface-raised p-6 sm:p-8">
+          <div class="flex flex-col gap-6 @md:flex-row @md:items-center @md:justify-between">
+            <div class="min-w-0">
+              <p class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-accent">
+                  <span aria-hidden="true" class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                  Sudah rilis
+                </span>
+                <span class="font-mono text-[11px] uppercase tracking-wider text-fg-muted">
+                  Produk · Kasir Android
+                </span>
+              </p>
+              <h2
+                id="rilis-intikasir"
+                class="mt-3 text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.01em]"
+              >
+                {intikasir.name}
+              </h2>
+              <p class="mt-1 text-[clamp(1.05rem,1.7vw,1.25rem)] font-medium text-accent">
+                {intikasir.tagline}
+              </p>
+              <p class="mt-3 max-w-[58ch] text-[15px] leading-relaxed text-fg-muted">
+                Aplikasi kasir Android offline untuk warung dan UMKM — penjualan, stok, dan uang
+                masuk–keluar dalam satu aplikasi. Gratis, tanpa langganan, dan open source GPL-3.0.
+              </p>
+            </div>
+            <div class="flex shrink-0 flex-wrap gap-3">
+              <a
+                href={intikasirDownloadUrl}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex min-h-11 items-center rounded-md bg-accent px-5 text-[15px] font-medium text-surface transition-opacity duration-150 hover:opacity-90"
+              >
+                Download di Google Play
+              </a>
+              <a
+                href="/intikasir/"
+                class="inline-flex min-h-11 items-center rounded-md border border-border-control px-5 text-[15px] text-fg transition-colors duration-150 hover:border-accent hover:text-accent"
+              >
+                Kenali Intikasir
+              </a>
+            </div>
           </div>
         </div>
       </section>
