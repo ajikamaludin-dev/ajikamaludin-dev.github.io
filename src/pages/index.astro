@@ -72,19 +72,6 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
     </div>
   </section>
 
-  <section class="mt-12 @container" aria-labelledby="bukti">
-    <h2 id="bukti" class="font-mono text-[11px] uppercase tracking-wider text-fg-muted">
-      Track record
-    </h2>
-    <div class="mt-4 rounded-3xl border border-border-subtle bg-surface-raised p-6 sm:p-8">
-      <p class="max-w-[64ch] text-[clamp(1.05rem,2vw,1.3rem)] leading-relaxed text-fg">
-        6+ tahun membangun dan mengoptimalkan sistem untuk bisnis — dari perbankan, distribusi
-        properti, hingga SaaS — bersama tim seperti
-        <span class="font-medium">Bank Raya, Redawning, dan Penerid Solusi Indonesia.</span>
-      </p>
-    </div>
-  </section>
-
   <section id="layanan" class="mt-20 scroll-mt-24 @container" aria-labelledby="h-layanan">
     <h2
       id="h-layanan"
@@ -208,10 +195,16 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
       Buka demo, lalu gunakan kredensial di bawah untuk masuk.
     </p>
 
-    <div class="mt-8 grid grid-cols-1 gap-4 @md:grid-cols-2">
+    <div
+      id="karya-track"
+      role="region"
+      aria-label="Daftar karya — geser ke samping untuk melihat semua"
+      tabindex="0"
+      class="mt-8 flex gap-4 overflow-x-auto pb-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
       {
         portfolio.map((item) => (
-          <article class="flex flex-col rounded-3xl border border-border-subtle bg-surface-raised p-6">
+          <article class="flex w-[min(85vw,22rem)] shrink-0 snap-start flex-col rounded-3xl border border-border-subtle bg-surface-raised p-6">
             <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
               <h3 class="text-[clamp(1.05rem,2vw,1.25rem)] font-semibold tracking-tight">
                 {item.name}
@@ -357,4 +350,56 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
       </a>
     </div>
   </section>
+
+  <script>
+    const track = document.getElementById("karya-track");
+
+    if (track) {
+      const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+      let paused = false;
+      let raf = 0;
+      let last = 0;
+
+      // Auto-scroll pelan; berhenti saat hover/focus dan saat prefers-reduced-motion.
+      const step = (now: number) => {
+        if (last === 0) last = now;
+        const delta = now - last;
+        last = now;
+
+        if (!paused && !reduceMotion.matches) {
+          const max = track.scrollWidth - track.clientWidth;
+          if (max > 0) {
+            // Kembali ke awal saat mencapai ujung agar loop mulus.
+            const next = track.scrollLeft + delta * 0.03;
+            track.scrollLeft = next > max ? 0 : next;
+          }
+        }
+        raf = requestAnimationFrame(step);
+      };
+
+      raf = requestAnimationFrame(step);
+
+      const pause = () => {
+        paused = true;
+      };
+      const resume = () => {
+        paused = false;
+      };
+
+      track.addEventListener("pointerenter", pause);
+      track.addEventListener("pointerleave", resume);
+      track.addEventListener("focusin", pause);
+      track.addEventListener("focusout", resume);
+
+      // Hentikan loop saat halaman tidak terlihat untuk hemat daya.
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          cancelAnimationFrame(raf);
+        } else {
+          last = 0;
+          raf = requestAnimationFrame(step);
+        }
+      });
+    }
+  </script>
 </BaseLayout>
