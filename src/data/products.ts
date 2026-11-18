@@ -21,13 +21,9 @@ export interface Product {
 /** Tagline resmi — sumber: docs/PRD.md (Intikasir). Dipakai lintas halaman. */
 export const intikasirTagline = "Jualan rapi, usaha tenang";
 
-/**
- * Tujuan CTA download Intikasir. Sementara ini WhatsApp (dummy) sampai rilis
- * Google Play. Saat URL Play Store final, ganti SATU baris ini saja.
- */
-export const intikasirDownloadUrl = `https://wa.me/${profile.contacts.whatsapp}?text=${encodeURIComponent(
-  "Halo, saya mau download Intikasir di Google Play. Kabari ya kalau sudah tersedia.",
-)}`;
+/** Tujuan CTA download Intikasir — Play Store resmi (sudah rilis). */
+export const intikasirDownloadUrl =
+  "https://play.google.com/store/apps/details?id=id.ajikamaludin.intikasir";
 
 /**
  * Produk = sesuatu yang dipakai orang lain secara nyata.
@@ -41,11 +37,11 @@ export const products: Product[] = [
     slug: "intikasir",
     name: "Intikasir",
     tagline: intikasirTagline,
-    status: "beta",
+    status: "live",
     description:
       "Aplikasi kasir Android offline untuk warung dan UMKM Indonesia: penjualan, stok, " +
       "dan uang masuk–keluar di satu aplikasi. Gratis, tanpa iklan dan tanpa langganan; " +
-      "open source (GPL-3.0). Masih dalam tahap persiapan rilis di Google Play.",
+      "open source (GPL-3.0). Sudah tersedia di Google Play.",
     features: [
       "Kasir cepat: scan barcode kamera, hitung kembalian otomatis",
       "Pembayaran tunai dan QRIS Static tampil di layar pembayaran",
@@ -56,7 +52,7 @@ export const products: Product[] = [
     ],
     links: [
       { label: "Kenali Intikasir", url: "/intikasir/" },
-      { label: "Tanya rilis via WhatsApp", url: intikasirDownloadUrl },
+      { label: "Download di Google Play", url: intikasirDownloadUrl },
     ],
     stack: ["Flutter", "Dart", "SQLite"],
   },

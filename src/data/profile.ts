@@ -1,3 +1,5 @@
+import { consultingCopy } from "./consulting.ts";
+
 /**
  * Sumber kebenaran tunggal untuk identitas & kontak.
  * Isi diambil dari `[ATS] CV - Aji Kamaludin.pdf`.
@@ -5,7 +7,7 @@
  */
 export const profile = {
   name: "Aji Kamaludin",
-  role: "Software Engineer",
+  role: "Konsultan MVP & Pengembang Aplikasi",
   location: "Klaten, Indonesia",
   site: "https://ajikamaludin.id",
   /** Bukan placeholder — avatar ini memang dipakai sebagaimana adanya. */
@@ -16,13 +18,9 @@ export const profile = {
     "responsif. Ada pengalaman langsung di full-stack, cloud platform, dan Linux system " +
     "administration, dengan latar belakang network engineering, virtualization, dan praktik DevOps. " +
     "Saya rutin riset dan eksperimen teknologi baru supaya tidak tertinggal perkembangan industri.",
-  /**
-   * Deskripsi pendek untuk hero homepage — sengaja bahasa Inggris sebagai
-   * default, karena pembaca pertama halaman depan kemungkinan besar perekrut
-   * internasional. `summary` di atas tetap bahasa Indonesia untuk halaman About.
-   */
+  /** Deskripsi pendek untuk hero homepage — berorientasi hasil, Bahasa Indonesia. */
   heroTagline:
-    "Six years building backends and infrastructure with PHP, Go, and AWS — based in Klaten, Indonesia.",
+    "Membantu UMKM besar dan startup membangun aplikasi yang benar-benar dipakai — dari ide sampai rilis.",
   contacts: {
     whatsapp: "6281325307692",
     email: "aji19kamaludin@gmail.com",
@@ -30,6 +28,17 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/19ajikamaludin",
   },
 } as const;
+
+/**
+ * Satu-satunya jalan membuat tautan WhatsApp. Nomor hanya diketik sekali di
+ * `profile.contacts.whatsapp`; pesan opsional di-encode sebagai query `text`.
+ */
+export function whatsappUrl(message?: string): string {
+  const digits = profile.contacts.whatsapp.replace(/[^0-9]/g, "");
+  return message
+    ? `https://wa.me/${digits}?text=${encodeURIComponent(message)}`
+    : `https://wa.me/${digits}`;
+}
 
 export type Profile = typeof profile;
 
@@ -42,17 +51,16 @@ export interface NavLink {
 
 /**
  * Satu sumber untuk navigasi. Dipakai Nav dan Footer.
- * `Hire Me!` sengaja memakai `wa.me` yang dihitung dari `contacts.whatsapp`
- * supaya nomor hanya diketik sekali.
+ * "Konsultasi" memakai `whatsappUrl` supaya nomor dan pesan tidak ditulis dua kali.
  */
 export const navLinks: readonly NavLink[] = [
-  { href: "/about/", label: "About" },
+  { href: "/about/", label: "Tentang" },
   { href: "/blog/", label: "Blog" },
-  { href: "/projects/", label: "Projects" },
-  { href: "/products/", label: "Products" },
+  { href: "/projects/", label: "Proyek" },
+  { href: "/products/", label: "Produk" },
   {
-    href: `https://wa.me/${profile.contacts.whatsapp.replace(/[^0-9]/g, "")}`,
-    label: "Hire Me!",
+    href: whatsappUrl(consultingCopy.consultationMessage),
+    label: "Konsultasi",
     external: true,
   },
 ];

@@ -21,7 +21,7 @@ const COLORS = {
 };
 
 const NAME = "Aji Kamaludin";
-const ROLE = "Software Engineer";
+const ROLE = "Konsultan MVP & Pengembang Aplikasi";
 const PLACE = "Klaten, Indonesia";
 const DOMAIN = "ajikamaludin.id";
 

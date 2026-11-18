@@ -1,6 +1,6 @@
 # ajikamaludin.id
 
-Static personal portfolio, blog, projects, dan products.
+Situs konsultasi MVP & pengembangan aplikasi untuk UMKM & startup, plus blog, projects, dan products.
 Dibangun dengan **Astro 7** + **Tailwind CSS 4**, output **HTML/CSS/JS murni**.
 
 Domain: <https://ajikamaludin.id>
@@ -124,7 +124,7 @@ personal-profile/
 
 | URL                | Isi                                                                | Sumber data                   |
 | ------------------ | ------------------------------------------------------------------ | ----------------------------- |
-| `/`                | Hero (gradient + glassmorphism), ringkasan, experience, CTA        | `profile.ts`, `experience.ts` |
+| `/`                | Hero konsultan, statistik bukti, layanan, proses, case study Intikasir, pengalaman, CTA konsultasi | `consulting.ts`, `profile.ts`, `experience.ts`, `products.ts` |
 | `/about`           | Cerita, pendidikan, keahlian, sertifikasi, pencapaian, tautan lain | semua `data/*.ts`             |
 | `/blog`            | Indeks artikel + pencarian Pagefind                                | `content/blog/`               |
 | `/blog/[slug]`     | Artikel                                                            | `content/blog/`               |
@@ -136,10 +136,10 @@ personal-profile/
 | `/intikasir/kebijakan-privasi`    | Kebijakan privasi Intikasir                  | port `docs/PRIVACY.md`        |
 | `/rss.xml`         | Feed                                                               | `@astrojs/rss`                |
 
-Navigasi: About · Blog · Projects · Products · **Hire Me!** (eksternal ke `wa.me`).
+Navigasi: Tentang · Blog · Proyek · Produk · **Konsultasi** (eksternal ke `wa.me`).
 Tidak ada halaman `/uses` — isinya sudah digabung ke `/about`.
 
-**Prinsip routing:** semua URL ending `/blog/*` dan `/projects/*` harus valid sebagai file statis. Tidak ada routing client-side yang bergantung JS. Link eksternal (`Hire Me!`, GitHub, LinkedIn, tautan produk) wajib `target="_blank" rel="noopener"`.
+**Prinsip routing:** semua URL ending `/blog/*` dan `/projects/*` harus valid sebagai file statis. Tidak ada routing client-side yang bergantung JS. Link eksternal (`Konsultasi`, GitHub, LinkedIn, tautan produk) wajib `target="_blank" rel="noopener"`.
 
 ---
 
@@ -181,7 +181,7 @@ Frontmatter project mengharuskan `pubDate` untuk pengurutan. **Isi dengan tangga
 
 Edit `src/data/products.ts`. Produk berbeda dari project: produk = sesuatu yang dipakai orang lain secara nyata (ada pengguna, ada nilai), project = eksperimen atau case study.
 
-Sumber konten Intikasir: repo `inti-kasir` (`PLAY_STORE.md`, `PRD.md`, `docs/DISCLAIMER.md`, `docs/PRIVACY.md`). Intikasir belum dirilis (status `beta`) — entri ini sengaja ada karena halaman publicity `/intikasir` sudah aktif dan link-nya mengarah ke sana.
+Sumber konten Intikasir: repo `inti-kasir` (`PLAY_STORE.md`, `PRD.md`, `docs/DISCLAIMER.md`, `docs/PRIVACY.md`). Intikasir sudah rilis di Google Play (status `live`) — CTA download memakai satu konstanta `intikasirDownloadUrl` di `products.ts`.
 
 ---
 
