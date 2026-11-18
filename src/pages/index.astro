@@ -202,7 +202,7 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
       role="region"
       aria-label="Daftar karya — geser ke samping untuk melihat semua"
       tabindex="0"
-      class="mt-8 flex cursor-grab gap-4 overflow-x-auto pb-4 [&:active]:cursor-grabbing focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      class="themed-scrollbar mt-8 flex cursor-grab gap-4 overflow-x-auto pb-3 [&:active]:cursor-grabbing focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
       {
         portfolio.map((item) => (

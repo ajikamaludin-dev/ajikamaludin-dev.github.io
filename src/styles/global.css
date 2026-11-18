@@ -70,6 +70,27 @@
 }
 
 @layer components {
+  /* Scrollbar horizontal yang menyatu dengan tema (bukan bawaan browser). */
+  .themed-scrollbar {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--color-border-control) transparent; /* Firefox: thumb track */
+  }
+  .themed-scrollbar::-webkit-scrollbar {
+    height: 6px;
+  }
+  .themed-scrollbar::-webkit-scrollbar-track {
+    background: color-mix(in oklab, var(--color-fg) 6%, transparent);
+    border-radius: 9999px;
+  }
+  .themed-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-border-control);
+    border-radius: 9999px;
+    transition: background 150ms ease;
+  }
+  .themed-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+  }
+
   /*
    * Hero: gradien gelap + panel kaca.
    * Lapisan gradien ditaruh terpisah di belakang panel, supaya backdrop-blur
