@@ -103,7 +103,7 @@ personal-profile/
 │   │   └── rss.xml.ts
 │   ├── styles/global.css       # @theme token + .prose + hero glass
 │   └── utils/date.ts
-├── .agents/skills/             # 6 pi skills — project-local, bukan global
+├── .agents/skills/             # 7 pi skills — project-local, bukan global
 ├── astro.config.mjs
 ├── biome.json
 ├── package.json
@@ -265,16 +265,15 @@ Deploy hanya dari branch `main`. Pull request = preview, tidak menyentuh product
 
 Skills untuk agent disimpan di `.agents/skills/` di dalam project ini — **bukan** di `~/.pi/skills/` atau `~/.agents/skills/`. Jadi hanya aktif saat bekerja di repo ini, dan ikut masuk version control untuk tim atau agent lain.
 
-| Skill               | Gunanya                             |
-| ------------------- | ----------------------------------- |
-| Skill               | Sumber                              | Installasi | Gunanya                                                                 |
-| ---                 | ---                                 | ---        | ---                                                                     |
-| `astro`             | Astro Team (MIT)                    | 16.7K      | Komponen & halaman Astro, content collections, islands, SSG, deploy     |
-| `frontend-design`   | anthropics/skills                   | 968.7K     | Arah visual yang distinctive — tipografi, hindari gaya template default |
-| `article-writing`   | affaan-m/ecc                        | 11.2K      | Artikel/guide/blog panjang dengan voice yang konsisten                  |
-| `seo`               | addyosmani/web-quality-skills (MIT) | 49.5K      | Meta tag, structured data, sitemap, ranking pencarian                   |
-| `content-strategy`  | coreyhaines31/marketingskills       | 153.8K     | Strategi & pemilihan topik konten, apa yang sebaiknya ditulis           |
-| `web-quality-audit` | addyosmani/web-quality-skills (MIT) | 30K        | Audit berbasis bukti: performa, a11y, SEO, Lighthouse                   |
+| Skill                 | Sumber                               | Installasi | Gunanya                                                                 |
+| --------------------- | ------------------------------------ | ---------- | ----------------------------------------------------------------------- |
+| `astro`               | Astro Team (MIT)                     | 16.7K      | Komponen & halaman Astro, content collections, islands, SSG, deploy     |
+| `frontend-design`     | anthropics/skills                    | 968.7K     | Arah visual yang distinctive — tipografi, hindari gaya template default |
+| `article-writing`     | affaan-m/ecc                         | 11.2K      | Artikel/guide/blog panjang dengan voice yang konsisten                  |
+| `seo`                 | addyosmani/web-quality-skills (MIT)  | 49.5K      | Meta tag, structured data, sitemap, ranking pencarian                   |
+| `content-strategy`    | coreyhaines31/marketingskills        | 153.8K     | Strategi & pemilihan topik konten, apa yang sebaiknya ditulis           |
+| `web-quality-audit`   | addyosmani/web-quality-skills (MIT)  | 30K        | Audit berbasis bukti: performa, a11y, SEO, Lighthouse                   |
+| `modern-web-guidance` | GoogleChrome/modern-web-guidance     | 22.6K      | Pencarian praktik terbaik web modern (WAJIB untuk tugas HTML/CSS/JS)    |
 
 Semua terpasang **project-local** lewat `bunx skills add <pkg>` (tanpa `-g`), tercatat di `skills-lock.json`. Lokasi fisik `.agents/skills/`, dan `.claude/skills/` hanya berisi symlink **relatif** — nol file di luar folder ini.
 
