@@ -24,6 +24,7 @@ const excludedFromKarya = new Set([
   "hootka",
   "florist-order",
   "crm-klinik",
+  "tui-workflow",
 ]);
 
 const allProjects = (await getCollection("projects", ({ data }) => !data.draft)).sort(
