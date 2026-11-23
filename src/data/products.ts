@@ -83,4 +83,8 @@ export const otherLinks: Link[] = [
     label: "Kumpulan Proyek Lain",
     url: "https://s.ajikamaludin.id/portofolio",
   },
+  {
+    label: "Arsip Blog Lama (Blogspot)",
+    url: "https://ajikamaludin.blogspot.com/",
+  },
 ];

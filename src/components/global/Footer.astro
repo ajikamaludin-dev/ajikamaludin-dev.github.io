@@ -18,6 +18,11 @@ const contactRows = [
     value: contacts.linkedin.replace(/^https?:\/\//, ""),
     href: contacts.linkedin,
   },
+  {
+    label: "Blog Lama",
+    value: contacts.blog.replace(/^https?:\/\//, ""),
+    href: contacts.blog,
+  },
 ];
 ---
 
@@ -56,6 +61,7 @@ const contactRows = [
                 <a
                   href={row.href}
                   rel="noopener"
+                  target={row.href.startsWith("http") ? "_blank" : undefined}
                   class="group inline-flex min-h-11 items-baseline gap-2 text-sm"
                 >
                   <span class="w-20 shrink-0 text-fg-muted">{row.label}</span>

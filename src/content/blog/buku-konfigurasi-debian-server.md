@@ -8,7 +8,7 @@ draft: false
 
 Buku digital **"Konfigurasi Debian Server"** (atau yang juga dikenal sebagai panduan *Linux System Administration & Debian Server*) disusun sebagai rangkuman praktis langkah demi langkah untuk membangun dan mengelola server Linux dari nol.
 
-Buku ini awalnya lahir dari kebutuhan catatan lapangan dan materi pelatihan saat aktif di komunitas BLC Telkom Klaten dan lingkungan SMK TKJ pada tahun 2015. Tujuannya sederhana: menyediakan panduan berbahasa Indonesia yang to-the-point, minim teori berbelit, dan langsung menguji konfigurasi nyata di terminal.
+Buku ini awalnya lahir dari kebutuhan catatan lapangan dan materi pelatihan saat aktif di komunitas BLC Telkom Klaten dan lingkungan SMK TKJ pada tahun 2015. Berbagai catatan teknis dan dokumentasi konfigurasi saat itu juga sempat saya publikasikan secara berkala di [Blogspot lama (AJIBLOG)](https://ajikamaludin.blogspot.com/). Tujuannya sederhana: menyediakan panduan berbahasa Indonesia yang to-the-point, minim teori berbelit, dan langsung menguji konfigurasi nyata di terminal.
 
 ## Apa Saja yang Dibahas?
 
