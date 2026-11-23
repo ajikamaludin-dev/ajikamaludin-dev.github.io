@@ -54,7 +54,7 @@ export const achievements: Achievement[] = [
     title: "Author",
     detail: 'Buku "Linux System Administration & Debian Server"',
     year: "2015",
-    url: "https://drive.google.com/file/d/0BwweuGyQqkVJOTR0eFhwb0h2UFU/view?usp=sharing&resourcekey=0-3VyRwvY_gdMx7NqyTn3cbQ",
+    url: "/blog/buku-konfigurasi-debian-server/",
   },
   {
     title: "Juara 3",

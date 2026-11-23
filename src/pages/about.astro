@@ -233,8 +233,8 @@ const sections = [
                 {a.url ? (
                   <a
                     href={a.url}
-                    target="_blank"
-                    rel="noopener"
+                    target={a.url.startsWith("http") ? "_blank" : undefined}
+                    rel={a.url.startsWith("http") ? "noopener" : undefined}
                     class="text-fg underline decoration-border-control underline-offset-4 transition-colors duration-150 hover:text-accent"
                   >
                     {a.detail}
