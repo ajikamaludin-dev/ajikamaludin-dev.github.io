@@ -23,34 +23,45 @@ const sections = [
   title={`Tentang ${profile.name} — ${profile.role}`}
   description="Latar belakang dan keahlian Aji Kamaludin — konsultan MVP dan pengembang aplikasi untuk UMKM & startup di Klaten, Indonesia."
 >
-  <header class="max-w-[65ch]">
-    <h1 class="text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.02em]">
-      Tentang saya
-    </h1>
-    <p class="mt-5 text-[clamp(1rem,1.5vw,1.125rem)] leading-relaxed text-fg-muted">
-      Saya membantu UMKM besar dan startup merancang serta membangun aplikasi — dari ide sampai
-      rilis.
-    </p>
-    <p class="mt-4 text-[15px] leading-relaxed text-fg-muted">
-      {profile.summary}
-    </p>
-    <p class="mt-4 text-[15px] leading-relaxed text-fg-muted">
-      Sekarang di {profile.location}. Bisa dihubungi lewat{" "}
-      <a
-        href={`mailto:${profile.contacts.email}`}
-        class="text-fg underline decoration-border-control underline-offset-4 transition-colors duration-150 hover:text-accent"
-      >
-        email
-      </a>{" "}
-      atau{" "}
-      <a
-        href={`https://wa.me/${profile.contacts.whatsapp.replace(/[^0-9]/g, '')}`}
-        rel="noopener"
-        class="text-fg underline decoration-border-control underline-offset-4 transition-colors duration-150 hover:text-accent"
-      >
-        WhatsApp
-      </a>.
-    </p>
+  <header class="grid gap-8 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-12">
+    <div class="max-w-[65ch]">
+      <h1 class="text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.02em]">
+        Tentang saya
+      </h1>
+      <p class="mt-5 text-[clamp(1rem,1.5vw,1.125rem)] leading-relaxed text-fg-muted">
+        Saya membantu UMKM besar dan startup merancang serta membangun aplikasi — dari ide sampai
+        rilis.
+      </p>
+      <p class="mt-4 text-[15px] leading-relaxed text-fg-muted">
+        {profile.summary}
+      </p>
+      <p class="mt-4 text-[15px] leading-relaxed text-fg-muted">
+        Sekarang di {profile.location}. Bisa dihubungi lewat{" "}
+        <a
+          href={`mailto:${profile.contacts.email}`}
+          class="text-fg underline decoration-border-control underline-offset-4 transition-colors duration-150 hover:text-accent"
+        >
+          email
+        </a>{" "}
+        atau{" "}
+        <a
+          href={`https://wa.me/${profile.contacts.whatsapp.replace(/[^0-9]/g, '')}`}
+          rel="noopener"
+          class="text-fg underline decoration-border-control underline-offset-4 transition-colors duration-150 hover:text-accent"
+        >
+          WhatsApp
+        </a>.
+      </p>
+    </div>
+
+    <img
+      src={profile.avatar}
+      alt={`Foto profil ${profile.name}`}
+      width="176"
+      height="176"
+      loading="eager"
+      class="h-28 w-28 shrink-0 rounded-2xl object-cover ring-1 ring-border-control sm:h-44 sm:w-44"
+    />
   </header>
 
   <nav aria-label="Daftar isi" class="mt-10 border-t border-border-subtle pt-5">

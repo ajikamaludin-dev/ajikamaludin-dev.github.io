@@ -41,10 +41,8 @@ const karyaProjects = allProjects.filter((p) => !excludedFromKarya.has(p.id));
     <div class="hero-gradient absolute inset-0" aria-hidden="true"></div>
 
     <div class="relative mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
-      <div
-        class="hero-glass grid gap-8 rounded-3xl p-6 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-12 sm:p-10"
-      >
-        <div class="min-w-0">
+      <div class="hero-glass rounded-3xl p-6 sm:p-10">
+        <div class="max-w-[65ch]">
           <p class="font-mono text-[11px] uppercase tracking-wider text-accent">
             {profile.name} — {consultingCopy.eyebrow}
           </p>
@@ -76,16 +74,6 @@ const karyaProjects = allProjects.filter((p) => !excludedFromKarya.has(p.id));
             </a>
           </div>
         </div>
-
-        <img
-          src={profile.avatar}
-          alt="Foto profil Aji Kamaludin, konsultan MVP dan pengembang aplikasi"
-          width="176"
-          height="176"
-          loading="eager"
-          fetchpriority="high"
-          class="h-28 w-28 shrink-0 rounded-full object-cover ring-1 ring-border-control sm:h-44 sm:w-44"
-        />
       </div>
     </div>
   </section>
