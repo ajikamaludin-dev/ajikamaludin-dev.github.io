@@ -2,6 +2,7 @@
 dist/
 .astro/
 docs/
+skills/
 
 # dependencies
 node_modules/
