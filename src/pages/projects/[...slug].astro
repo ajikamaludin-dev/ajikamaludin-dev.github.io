@@ -21,13 +21,13 @@ const { Content } = await render(project);
   tags={project.data.stack}
 >
   <Content />
-</PostLayout>
 
-<p class="mt-14 border-t border-border-subtle pt-6">
-  <a
-    href="/projects/"
-    class="text-sm text-fg-muted underline-offset-4 transition-colors duration-150 hover:text-accent hover:underline"
-  >
-    Kembali ke semua project
-  </a>
-</p>
+  <p slot="after" class="mt-14 border-t border-border-subtle pt-6">
+    <a
+      href="/projects/"
+      class="text-sm text-fg-muted underline-offset-4 transition-colors duration-150 hover:text-accent hover:underline"
+    >
+      Kembali ke semua project
+    </a>
+  </p>
+</PostLayout>
