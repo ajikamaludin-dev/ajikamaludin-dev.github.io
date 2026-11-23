@@ -16,9 +16,21 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 )[0];
 
-const projects = (await getCollection("projects", ({ data }) => !data.draft)).sort(
+const excludedFromKarya = new Set([
+  "nusatravel",
+  "approval-po",
+  "web-event",
+  "dti-event",
+  "hootka",
+  "florist-order",
+  "crm-klinik",
+]);
+
+const allProjects = (await getCollection("projects", ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
+
+const karyaProjects = allProjects.filter((p) => !excludedFromKarya.has(p.id));
 ---
 
 <BaseLayout
@@ -214,7 +226,7 @@ const projects = (await getCollection("projects", ({ data }) => !data.draft)).so
         href="/projects/"
         class="inline-flex min-h-11 shrink-0 items-center text-sm text-fg-muted underline-offset-4 transition-colors duration-150 hover:text-accent hover:underline"
       >
-        Lihat semua {projects.length} proyek &rarr;
+        Lihat semua proyek &rarr;
       </a>
     </div>
 
@@ -231,7 +243,7 @@ const projects = (await getCollection("projects", ({ data }) => !data.draft)).so
       class="themed-scrollbar mt-8 flex cursor-grab gap-4 overflow-x-auto pb-3 snap-x snap-mandatory scroll-smooth [&:active]:cursor-grabbing focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
       {
-        projects.map((item) => (
+        karyaProjects.map((item) => (
           <article class="flex w-[min(85vw,22rem)] shrink-0 snap-start flex-col rounded-3xl border border-border-subtle bg-surface-raised p-5 sm:p-6">
             {item.data.cover && (
               <a
