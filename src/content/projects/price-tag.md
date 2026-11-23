@@ -1,7 +1,7 @@
 ---
 title: "Price Tag Generator: Label Rak Minimarket"
 description: "Aplikasi manajemen katalog produk untuk mencetak price tag dan label harga rak minimarket dengan ukuran presisi standar display toko."
-pubDate: 2024-05-15
+pubDate: 2024-09-30
 stack:
   - "Laravel"
   - "Inertia.js"

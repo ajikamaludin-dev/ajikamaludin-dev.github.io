@@ -1,7 +1,7 @@
 ---
 title: "Web Event: Pemesanan Tiket Online Konser"
 description: "Website pemesanan tiket konser musik dan pertunjukan daring dengan pemilihan tier tiket, proteksi overbooking, dan e-ticket barcode."
-pubDate: 2024-09-02
+pubDate: 2024-03-05
 stack:
   - "Laravel"
   - "Inertia.js"

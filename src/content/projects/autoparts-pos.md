@@ -1,7 +1,7 @@
 ---
 title: "Autoparts POS: Alur Order Toko Sparepart"
 description: "Sistem POS dengan kontrol alur lengkap dari store order, purchase order, pembelian barang masuk, penjualan kasir, hingga retur suku cadang."
-pubDate: 2024-03-10
+pubDate: 2024-11-10
 stack:
   - "Laravel"
   - "Inertia.js"

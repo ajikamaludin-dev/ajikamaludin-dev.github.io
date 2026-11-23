@@ -1,7 +1,7 @@
 ---
 title: "Hootka: Platform Kuis Interaktif Realtime"
 description: "Aplikasi kuis online multiplayer realtime seperti Kahoot yang dibangun dengan Laravel, Inertia, React, dan WebSocket engine Soketi."
-pubDate: 2024-07-08
+pubDate: 2024-03-15
 stack:
   - "Laravel"
   - "Inertia.js"

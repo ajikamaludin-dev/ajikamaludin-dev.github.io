@@ -1,7 +1,7 @@
 ---
 title: "Doorprize Picker: Undian Event Multi-Sesi"
 description: "Aplikasi pengelolaan undian doorprize pada gathering perusahaan dan seminar dengan animasi pengacakan nomor pemenang interaktif di layar lebar."
-pubDate: 2024-11-04
+pubDate: 2024-09-20
 stack:
   - "Laravel"
   - "Inertia.js"

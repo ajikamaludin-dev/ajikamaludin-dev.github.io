@@ -1,7 +1,7 @@
 ---
 title: "Shortlink Manager: Pemendek Tautan Cepat"
 description: "Layanan pemendek tautan (URL shortener) dengan pelacakan analitik klik, custom alias slug, dan manajemen data cepat menggunakan Livewire PowerGrid."
-pubDate: 2024-08-05
+pubDate: 2024-09-15
 stack:
   - "Laravel"
   - "Livewire"

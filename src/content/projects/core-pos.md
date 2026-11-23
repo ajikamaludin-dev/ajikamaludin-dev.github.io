@@ -1,7 +1,7 @@
 ---
 title: "Core POS: Kasir & Inventori Multi-Gudang"
 description: "Aplikasi POS dengan fitur inventori multi-gudang, kontrol stok opname, transfer stok, penjualan, pembelian, dan sistem role-based access control."
-pubDate: 2024-02-15
+pubDate: 2024-11-20
 stack:
   - "Laravel"
   - "Inertia.js"

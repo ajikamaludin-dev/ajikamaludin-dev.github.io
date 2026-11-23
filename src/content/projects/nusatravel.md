@@ -1,7 +1,7 @@
 ---
 title: "Nusatravel: Portal Agen Wisata & Midtrans"
 description: "Portal pemesanan paket wisata online multibahasa dengan reservasi tiket, manajemen kuota, dan gateway pembayaran instan Midtrans Snap."
-pubDate: 2024-06-12
+pubDate: 2024-02-25
 stack:
   - "Laravel"
   - "Livewire"

@@ -1,7 +1,7 @@
 ---
 title: "Voucher WiFi Shop: Toko Voucher Internet TWA"
 description: "Aplikasi penjualan voucher internet/hotspot dengan UI mobile-first serta integrasi Trusted Web Activity (TWA) untuk aplikasi Android di Google Play."
-pubDate: 2024-04-05
+pubDate: 2024-10-30
 stack:
   - "Laravel"
   - "Inertia.js"

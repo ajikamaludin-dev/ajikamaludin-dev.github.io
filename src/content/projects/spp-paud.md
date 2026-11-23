@@ -1,7 +1,7 @@
 ---
 title: "SPP PAUD: Pembayaran Sekolah & Tabungan Siswa"
 description: "Aplikasi administrasi pembayaran SPP bulanan, uang kegiatan, dan pencatatan buku tabungan siswa untuk jenjang PAUD, TK, dan TPA."
-pubDate: 2024-10-28
+pubDate: 2024-10-25
 stack:
   - "Laravel"
   - "Blade"

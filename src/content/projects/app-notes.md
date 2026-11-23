@@ -1,7 +1,7 @@
 ---
 title: "App Notes: Manajemen Klien & Tracking Proyek"
 description: "Aplikasi pencatatan klien dan pelacakan progres proyek sederhana untuk agensi digital, software house, dan konsultan independen."
-pubDate: 2024-11-20
+pubDate: 2024-09-10
 stack:
   - "Laravel"
   - "Inertia.js"

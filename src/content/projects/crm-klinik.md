@@ -1,7 +1,7 @@
 ---
 title: "CRM Klinik Kecantikan & Resep Digital Pasien"
 description: "Sistem CRM untuk klinik estetika dan dokter kecantikan dengan riwayat treatment, rekam medis pasien, dan pembuatan formulasi resep digital."
-pubDate: 2024-05-02
+pubDate: 2024-03-25
 stack:
   - "Laravel"
   - "Inertia.js"

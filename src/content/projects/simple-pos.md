@@ -1,7 +1,7 @@
 ---
 title: "Simple POS: Kasir Minimalis Berbasis SQLite"
 description: "Aplikasi kasir online sederhana dan portabel yang dibangun dengan Laravel, React, dan SQLite untuk kebutuhan transaksi cepat UMKM."
-pubDate: 2024-03-20
+pubDate: 2024-11-05
 stack:
   - "Laravel"
   - "Inertia.js"

@@ -1,7 +1,7 @@
 ---
 title: "PG POS: Kasir Toko & Surat Jalan Pengiriman"
 description: "Aplikasi kasir toko modern dengan manajemen stok, retur penjualan, pencatatan piutang pelanggan, kas toko, dan cetak surat jalan pengiriman barang."
-pubDate: 2024-02-28
+pubDate: 2024-11-15
 stack:
   - "Laravel"
   - "Inertia.js"

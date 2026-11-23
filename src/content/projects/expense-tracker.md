@@ -1,7 +1,7 @@
 ---
 title: "Expense Tracker: Keuangan & Budgeting DaisyUI"
 description: "Aplikasi pelacakan pengeluaran dan anggaran keuangan pribadi/usaha dengan visualisasi kategori serta database SQLite hemat resource."
-pubDate: 2024-07-22
+pubDate: 2024-10-20
 stack:
   - "Laravel"
   - "Inertia.js"

@@ -1,7 +1,7 @@
 ---
 title: "Tabungan Sekolah: Rekap Simpanan Siswa"
 description: "Aplikasi pencatatan tabungan nasabah/siswa sederhana untuk sekolah dasar dan TPA dengan rekap transaksi setor-tarik dan cetak mutasi saldo."
-pubDate: 2024-11-10
+pubDate: 2024-09-25
 stack:
   - "Laravel"
   - "Inertia.js"

@@ -1,7 +1,7 @@
 ---
 title: "Florist Order: Manajemen Toko Bunga Multi-Cabang"
 description: "Aplikasi manajemen pesanan karangan bunga dan buket untuk toko florist dengan sistem multi-cabang, tahapan produksi, dan tracking pengiriman."
-pubDate: 2024-05-28
+pubDate: 2024-03-20
 stack:
   - "Laravel"
   - "Inertia.js"

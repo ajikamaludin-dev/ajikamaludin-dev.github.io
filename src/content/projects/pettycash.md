@@ -1,7 +1,7 @@
 ---
 title: "Petty Cash: Kas Kecil & Cetak Nota Invoice"
 description: "Aplikasi manajemen kas kecil operasional kantor dengan alur verifikasi pengeluaran bertingkat dan modul cetak nota/invoice kustom."
-pubDate: 2024-09-16
+pubDate: 2024-10-10
 stack:
   - "Laravel"
   - "Inertia.js"

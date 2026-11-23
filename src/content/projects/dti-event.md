@@ -1,7 +1,7 @@
 ---
 title: "DTI Event: Manajemen Acara & Kalender Jadwal"
 description: "Aplikasi pengelolaan konferensi dan pelatihan kerja terpadu dengan basis data peserta, pemateri, panitia, dan visualisasi kalender interaktif."
-pubDate: 2024-08-19
+pubDate: 2024-03-10
 stack:
   - "Laravel"
   - "Inertia.js"

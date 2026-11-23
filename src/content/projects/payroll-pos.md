@@ -1,7 +1,7 @@
 ---
 title: "Payroll POS: Penggajian Buruh & Output Produksi"
 description: "Aplikasi penggajian untuk buruh harian lepas dan pekerja borongan berdasarkan pencatatan hasil produksi riil serta slip gaji otomatis."
-pubDate: 2024-09-30
+pubDate: 2024-10-15
 stack:
   - "Laravel"
   - "Inertia.js"

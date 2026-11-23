@@ -1,7 +1,7 @@
 ---
 title: "PO Email Approval: Persetujuan Pengadaan Barang"
 description: "Sistem persetujuan Purchase Order berbasis email untuk mempercepat pengadaan barang perusahaan melalui one-click signed URL tanpa login rumit."
-pubDate: 2024-11-15
+pubDate: 2024-02-20
 stack:
   - "Laravel"
   - "Inertia.js"

@@ -1,7 +1,7 @@
 ---
 title: "Docmon: Monitoring Dokumen & Reminder Email"
 description: "Aplikasi pemantauan masa berlaku dokumen legal dan kontrak dengan notifikasi email berkala serta alur approval dokumen instan via email."
-pubDate: 2024-10-14
+pubDate: 2024-10-05
 stack:
   - "Laravel"
   - "Inertia.js"
