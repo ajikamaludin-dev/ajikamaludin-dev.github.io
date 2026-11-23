@@ -1,8 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import { consultingCopy, engagementModel, processSteps, services } from "../data/consulting.ts";
 import { experience } from "../data/experience.ts";
-import { portfolio, portfolioSheetUrl } from "../data/portfolio.ts";
 import { dotkasirDownloadUrl, products } from "../data/products.ts";
 import { profile, whatsappUrl } from "../data/profile.ts";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -15,6 +15,10 @@ const consultationUrl = whatsappUrl(consultingCopy.consultationMessage);
 const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 )[0];
+
+const projects = (await getCollection("projects", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
 ---
 
 <BaseLayout
@@ -207,18 +211,16 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
         </div>
       </div>
       <a
-        href={portfolioSheetUrl}
-        target="_blank"
-        rel="noopener"
+        href="/projects/"
         class="inline-flex min-h-11 shrink-0 items-center text-sm text-fg-muted underline-offset-4 transition-colors duration-150 hover:text-accent hover:underline"
       >
-        Lihat semua 30 demo
+        Lihat semua {projects.length} proyek &rarr;
       </a>
     </div>
 
     <p class="mt-4 max-w-[64ch] text-[15px] leading-relaxed text-fg-muted">
-      Contoh aplikasi yang sudah saya bangun — sebagian besar dengan Laravel, Inertia.js, dan React.
-      Buka demo, lalu gunakan kredensial di bawah untuk masuk.
+      Contoh aplikasi dan studi kasus sistem yang pernah saya bangun — sebagian besar dengan Laravel, Inertia.js, dan React.
+      Buka proyek untuk melihat arsitektur, catatan teknis, dan akses demo.
     </p>
 
     <div
@@ -229,50 +231,67 @@ const latestPost = (await getCollection("blog", ({ data }) => !data.draft)).sort
       class="themed-scrollbar mt-8 flex cursor-grab gap-4 overflow-x-auto pb-3 snap-x snap-mandatory scroll-smooth [&:active]:cursor-grabbing focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
       {
-        portfolio.map((item) => (
-          <article class="flex w-[min(85vw,22rem)] shrink-0 snap-start flex-col rounded-3xl border border-border-subtle bg-surface-raised p-6">
-            <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
-              <h3 class="text-[clamp(1.05rem,2vw,1.25rem)] font-semibold tracking-tight">
-                {item.name}
-              </h3>
-              <span class="rounded-full bg-accent/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-accent">
-                {item.type}
+        projects.map((item) => (
+          <article class="flex w-[min(85vw,22rem)] shrink-0 snap-start flex-col rounded-3xl border border-border-subtle bg-surface-raised p-5 sm:p-6">
+            {item.data.cover && (
+              <a
+                href={`/projects/${item.id}/`}
+                class="group mb-4 block overflow-hidden rounded-xl border border-border-subtle bg-surface-base"
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                <Image
+                  src={item.data.cover}
+                  alt={item.data.coverAlt ?? `Screenshot antarmuka ${item.data.title}`}
+                  widths={[360, 600]}
+                  sizes="(max-width: 640px) 85vw, 320px"
+                  class="aspect-[16/10] w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+                />
+              </a>
+            )}
+
+            <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+              <span class="rounded-full bg-accent/10 px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-wider text-accent">
+                {item.data.status === "live" ? "Live Demo" : item.data.status}
               </span>
             </div>
 
-            <p class="mt-2 max-w-[56ch] text-[15px] leading-relaxed text-fg-muted">
-              {item.description}
+            <h3 class="mt-2 text-[clamp(1.05rem,2vw,1.25rem)] font-semibold tracking-tight">
+              <a
+                href={`/projects/${item.id}/`}
+                class="underline-offset-4 transition-colors duration-150 hover:text-accent hover:underline"
+              >
+                {item.data.title}
+              </a>
+            </h3>
+
+            <p class="mt-2 line-clamp-3 text-[14px] leading-relaxed text-fg-muted">
+              {item.data.description}
             </p>
 
-            <p class="mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[12px] text-fg-muted">
-              {item.stack.map((tech) => (
-                <span>{tech}</span>
-              ))}
-            </p>
-
-            {item.credentials && (
-              <p class="mt-3 text-[13px] text-fg-muted">
-                <span class="font-medium text-fg">Demo login:</span> {item.credentials}
+            {item.data.stack.length > 0 && (
+              <p class="mt-3 flex flex-wrap gap-x-2 gap-y-1 font-mono text-[11px] text-fg-muted">
+                {item.data.stack.map((tech) => (
+                  <span>{tech}</span>
+                ))}
               </p>
             )}
 
-            <div class="mt-auto flex flex-wrap gap-3 pt-5">
+            <div class="mt-auto flex flex-wrap items-center gap-3 pt-5">
               <a
-                href={item.url}
-                target="_blank"
-                rel="noopener"
-                class="inline-flex min-h-11 items-center rounded-md border border-border-control px-5 text-[15px] text-fg transition-colors duration-150 hover:border-accent hover:text-accent"
+                href={`/projects/${item.id}/`}
+                class="inline-flex min-h-10 items-center justify-center rounded-lg bg-surface-base border border-border-control px-4 text-[13px] font-medium text-fg transition-colors duration-150 hover:border-accent hover:text-accent"
               >
-                Buka demo
+                Studi kasus &rarr;
               </a>
-              {item.adminUrl && (
+              {item.data.demoUrl && (
                 <a
-                  href={item.adminUrl}
+                  href={item.data.demoUrl}
                   target="_blank"
                   rel="noopener"
-                  class="inline-flex min-h-11 items-center rounded-md border border-border-control px-5 text-[15px] text-fg-muted transition-colors duration-150 hover:border-accent hover:text-accent"
+                  class="inline-flex min-h-10 items-center text-[13px] text-fg-muted underline-offset-4 transition-colors duration-150 hover:text-accent hover:underline"
                 >
-                  Panel admin
+                  Live demo &#8599;
                 </a>
               )}
             </div>

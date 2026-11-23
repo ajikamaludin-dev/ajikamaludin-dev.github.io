@@ -68,15 +68,6 @@ export const portfolio: PortfolioItem[] = [
     adminUrl: "https://hootka.ajikamaludin.id/login",
   },
   {
-    name: "Konveksi",
-    url: "https://konveksi.ajikamaludin.id/login",
-    description:
-      "Aplikasi manajemen pabrik jahit dan kain untuk mengelola proses produksi penjahitan.",
-    stack: ["Laravel", "Inertia.js", "React"],
-    type: "Web App",
-    credentials: "admin@admin.com / password",
-  },
-  {
     name: "Voucher WiFi (TWA)",
     url: "https://play.google.com/store/apps/details?id=id.my.itworks.voucher.twa",
     description:
