@@ -228,7 +228,21 @@ const sections = [
             <p class="font-mono text-[13px] leading-6 text-fg-muted tabular-nums">{a.year}</p>
             <p class="text-[15px] leading-relaxed">
               <span class="font-medium">{a.title}</span>
-              <span class="text-fg-muted"> — {a.detail}</span>
+              <span class="text-fg-muted">
+                {" — "}
+                {a.url ? (
+                  <a
+                    href={a.url}
+                    target="_blank"
+                    rel="noopener"
+                    class="text-fg underline decoration-border-control underline-offset-4 transition-colors duration-150 hover:text-accent"
+                  >
+                    {a.detail}
+                  </a>
+                ) : (
+                  a.detail
+                )}
+              </span>
             </p>
           </li>
         ))
