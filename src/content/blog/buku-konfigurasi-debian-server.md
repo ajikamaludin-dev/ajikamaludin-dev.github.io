@@ -1,7 +1,7 @@
 ---
 title: "Buku Konfigurasi Debian Server: Catatan Praktis Sysadmin"
 description: "Mengenal isi ebook Konfigurasi Debian Server: panduan praktis instalasi dan konfigurasi layanan jaringan Linux dari DNS, Web, Mail, hingga Firewall."
-pubDate: 2025-12-25
+pubDate: 2015-12-25
 tags: [linux, debian, sysadmin, ebook, networking]
 draft: false
 ---
