@@ -44,6 +44,7 @@ export const achievements: Achievement[] = [
     title: "Best Software Award",
     detail: "GelarKaryaMahasiswa",
     year: "2017",
+    url: "https://www.instagram.com/p/BdUp42XDaTE/",
   },
   {
     title: "Juara 3",
