@@ -62,4 +62,37 @@ const projects = defineCollection({
     }),
 });
 
-export const collections = { blog, projects };
+const dotkasirTutorials = defineCollection({
+  loader: glob({
+    pattern: "**/*.{md,mdx}",
+    base: "./src/content/dotkasir-tutorials",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string().max(90),
+      description: z.string().min(30).max(250),
+      category: z.enum([
+        "kategori-produk",
+        "katalog-produk",
+        "kasir-penjualan",
+        "stok-opname",
+        "pricetag",
+        "keuangan-kas",
+        "pelanggan-kasbon",
+        "pembelian-supplier",
+        "laporan-usaha",
+        "backup-data",
+        "export-import",
+        "pengaturan-toko",
+      ]),
+      categoryName: z.string(),
+      order: z.number().default(0),
+      tags: z.array(z.string()).default([]),
+      pubDate: z.coerce.date(),
+      updatedDate: z.coerce.date().optional(),
+      cover: image().optional(),
+      coverAlt: z.string().optional(),
+    }),
+});
+
+export const collections = { blog, projects, dotkasirTutorials };

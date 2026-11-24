@@ -1,0 +1,246 @@
+---
+/**
+ * Komponen pulau pencarian & filter tutorial Dotkasir.
+ * Berjalan murni di sisi klien (vanilla JS) tanpa dependensi eksternal.
+ * Menghasilkan kartu tutorial yang dapat difilter instan berdasarkan
+ * kata kunci pencarian dan tombol filter kategori.
+ */
+
+interface TutorialItem {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  categoryName: string;
+  tags: string[];
+  order: number;
+}
+
+interface CategoryOption {
+  key: string;
+  name: string;
+}
+
+interface Props {
+  tutorials: TutorialItem[];
+  categories: CategoryOption[];
+}
+
+const { tutorials, categories } = Astro.props;
+---
+
+<div class="tutorial-search-container @container" data-tutorials={JSON.stringify(tutorials)}>
+  <!-- Kolom Input Pencarian -->
+  <div class="relative">
+    <label for="tutorial-search-input" class="sr-only">Cari tutorial dotKasir</label>
+    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-fg-muted">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.3-4.3"></path>
+      </svg>
+    </div>
+    <input
+      type="search"
+      id="tutorial-search-input"
+      placeholder="Cari aksi atau fitur (misal: tambah kategori, scan barcode, cetak struk)…"
+      autocomplete="off"
+      class="min-h-12 w-full rounded-xl border border-border-control bg-surface pl-10 pr-10 text-[15px] text-fg outline-none transition-colors duration-150 placeholder:text-fg-muted focus:border-accent focus:ring-1 focus:ring-accent"
+    />
+    <button
+      type="button"
+      id="tutorial-search-clear"
+      aria-label="Bersihkan pencarian"
+      class="absolute inset-y-0 right-0 hidden items-center pr-3.5 text-fg-muted hover:text-fg"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Filter Kategori (Pill Chips) -->
+  <div class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter kategori tutorial">
+    <button
+      type="button"
+      class="cat-filter-btn active inline-flex items-center rounded-full border border-border-control bg-surface-raised px-3.5 py-1.5 text-xs font-medium text-fg transition-colors duration-150 hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-accent"
+      data-category="all"
+      aria-pressed="true"
+    >
+      Semua Modul
+    </button>
+    {categories.map((cat) => (
+      <button
+        type="button"
+        class="cat-filter-btn inline-flex items-center rounded-full border border-border-control bg-surface px-3.5 py-1.5 text-xs font-medium text-fg-muted transition-colors duration-150 hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-accent"
+        data-category={cat.key}
+        aria-pressed="false"
+      >
+        {cat.name}
+      </button>
+    ))}
+  </div>
+
+  <!-- Status Hasil Pencarian -->
+  <div class="mt-5 flex items-center justify-between text-sm text-fg-muted">
+    <p id="tutorial-search-status" role="status" aria-live="polite">
+      Menampilkan {tutorials.length} panduan
+    </p>
+  </div>
+
+  <!-- Grid Daftar Panduan -->
+  <div id="tutorial-card-grid" class="mt-6 grid gap-4 @md:grid-cols-2">
+    {tutorials.map((item) => (
+      <article
+        class="tutorial-card group relative flex flex-col justify-between rounded-card border border-border-subtle bg-surface-raised p-5 transition-colors duration-150 hover:border-accent/60"
+        data-id={item.id}
+        data-category={item.category}
+        data-title={item.title.toLowerCase()}
+        data-desc={item.description.toLowerCase()}
+        data-tags={item.tags.join(" ").toLowerCase()}
+      >
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center rounded-md bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+              {item.categoryName}
+            </span>
+          </div>
+          <h2 class="mt-3 text-base font-semibold leading-snug tracking-[-0.01em] text-fg group-hover:text-accent">
+            <a href={`/dotkasir/tutorial/${item.id}/`} class="after:absolute after:inset-0">
+              {item.title}
+            </a>
+          </h2>
+          <p class="mt-2 text-sm leading-relaxed text-fg-muted">
+            {item.description}
+          </p>
+        </div>
+        <div class="mt-4 flex items-center justify-between pt-3 text-xs text-fg-muted border-t border-border-subtle">
+          <span class="flex flex-wrap gap-1.5">
+            {item.tags.slice(0, 3).map((tag) => (
+              <span class="rounded bg-surface px-1.5 py-0.5 text-[11px] text-fg-muted">
+                #{tag}
+              </span>
+            ))}
+          </span>
+          <span class="inline-flex items-center font-medium text-accent transition-transform duration-150 group-hover:translate-x-1">
+            Baca &rarr;
+          </span>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <!-- Pesan Kosong Jika Tidak Ada Hasil -->
+  <div id="tutorial-empty-state" class="hidden rounded-card border border-dashed border-border-control p-8 text-center">
+    <p class="text-base font-medium text-fg">Tidak ada panduan yang cocok</p>
+    <p class="mt-1 text-sm text-fg-muted">
+      Coba kata kunci lain atau pilih filter kategori "Semua Modul".
+    </p>
+  </div>
+</div>
+
+<script>
+  function setupTutorialSearch() {
+    const container = document.querySelector(".tutorial-search-container") as HTMLElement | null;
+    if (!container) return;
+
+    const input = document.getElementById("tutorial-search-input") as HTMLInputElement | null;
+    const clearBtn = document.getElementById("tutorial-search-clear") as HTMLButtonElement | null;
+    const statusText = document.getElementById("tutorial-search-status") as HTMLElement | null;
+    const emptyState = document.getElementById("tutorial-empty-state") as HTMLElement | null;
+    const filterBtns = document.querySelectorAll(".cat-filter-btn") as NodeListOf<HTMLButtonElement>;
+    const cards = document.querySelectorAll(".tutorial-card") as NodeListOf<HTMLElement>;
+
+    if (!input || !cards.length) return;
+
+    let activeCategory = "all";
+    let activeQuery = "";
+
+    function filterItems() {
+      const q = activeQuery.trim().toLowerCase();
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const itemCat = card.getAttribute("data-category") || "";
+        const itemTitle = card.getAttribute("data-title") || "";
+        const itemDesc = card.getAttribute("data-desc") || "";
+        const itemTags = card.getAttribute("data-tags") || "";
+
+        const matchesCat = activeCategory === "all" || itemCat === activeCategory;
+        const matchesQuery =
+          !q ||
+          itemTitle.includes(q) ||
+          itemDesc.includes(q) ||
+          itemTags.includes(q);
+
+        if (matchesCat && matchesQuery) {
+          card.classList.remove("hidden");
+          visibleCount++;
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+
+      if (statusText) {
+        if (visibleCount === 0) {
+          statusText.textContent = "Tidak ada panduan ditemukan";
+        } else if (visibleCount === cards.length) {
+          statusText.textContent = `Menampilkan seluruh ${cards.length} panduan`;
+        } else {
+          statusText.textContent = `Menampilkan ${visibleCount} dari ${cards.length} panduan`;
+        }
+      }
+
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove("hidden");
+        } else {
+          emptyState.classList.add("hidden");
+        }
+      }
+
+      if (clearBtn) {
+        if (q.length > 0) {
+          clearBtn.classList.remove("hidden");
+          clearBtn.classList.add("flex");
+        } else {
+          clearBtn.classList.add("hidden");
+          clearBtn.classList.remove("flex");
+        }
+      }
+    }
+
+    input.addEventListener("input", () => {
+      activeQuery = input.value;
+      filterItems();
+    });
+
+    clearBtn?.addEventListener("click", () => {
+      input.value = "";
+      activeQuery = "";
+      input.focus();
+      filterItems();
+    });
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach((b) => {
+          b.classList.remove("active", "bg-surface-raised", "text-fg");
+          b.classList.add("bg-surface", "text-fg-muted");
+          b.setAttribute("aria-pressed", "false");
+        });
+
+        btn.classList.add("active", "bg-surface-raised", "text-fg");
+        btn.classList.remove("bg-surface", "text-fg-muted");
+        btn.setAttribute("aria-pressed", "true");
+
+        activeCategory = btn.getAttribute("data-category") || "all";
+        filterItems();
+      });
+    });
+  }
+
+  // Jalankan saat load dan setelah view-transition jika aktif
+  setupTutorialSearch();
+  document.addEventListener("astro:page-load", setupTutorialSearch);
+</script>
