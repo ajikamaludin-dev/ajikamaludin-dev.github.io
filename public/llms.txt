@@ -1,0 +1,33 @@
+# Aji Kamaludin
+
+> Situs web personal, profil profesional, blog teknis, dan informasi produk oleh Aji Kamaludin.
+
+Situs web ini (`https://ajikamaludin.id`) adalah situs statis personal milik Aji Kamaludin, seorang Konsultan MVP & Pengembang Aplikasi (Software Engineer) asal Klaten, Indonesia. Situs ini dibangun menggunakan framework Astro 7 dan Tailwind CSS 4 dengan output statis (HTML/CSS/JS) murni tanpa server runtime demi keamanan, kecepatan akses maksimal, dan efisiensi resource.
+
+## Profil Singkat
+
+Aji Kamaludin memiliki pengalaman lebih dari 6 tahun dalam rekayasa perangkat lunak, berfokus pada:
+- **Backend & Arsitektur Sistem:** PHP (Laravel), Go, perancangan RESTful API, gRPC, serta integritas data (PostgreSQL, MySQL, SQLite).
+- **Frontend:** React, Inertia.js, Tailwind CSS, TypeScript, dan arsitektur UI modern tanpa ketergantungan framework berat yang tidak perlu.
+- **Sistem & DevOps:** Administrasi server Linux, optimasi web server Nginx & PHP-FPM, containerization Docker, virtualisasi Proxmox VE, dan praktik CI/CD.
+- **Layanan Konsultasi:** Membantu UMKM dan startup membangun Minimum Viable Product (MVP) yang fungsional, teruji, dan siap dipakai pengguna nyata dari tahap discovery hingga rilis.
+
+## Halaman Utama
+
+- [Tentang](/about/): Profil lengkap, ringkasan kompetensi teknis, rekam jejak pekerjaan, sertifikasi, dan riwayat pengalaman profesional.
+- [Produk](/products/): Direktori produk digital yang dibangun untuk publik, mencakup status proyek dan tautan rilis resminya.
+- [Dotkasir](/dotkasir/): Informasi resmi mengenai Dotkasir — aplikasi kasir Android offline, gratis, tanpa iklan, dan open-source (GPL-3.0) yang tersedia di Google Play Store untuk kebutuhan warung dan UMKM.
+- [Blog](/blog/): Publikasi artikel teknis seputar arsitektur sistem, komparasi backend Go vs PHP, tuning Nginx PHP-FPM, homelab Proxmox, dan alur kerja AI-assisted development hemat biaya.
+
+## Kontak & Profil Resmi
+
+- **Website:** https://ajikamaludin.id
+- **Email:** aji19kamaludin@gmail.com
+- **GitHub:** https://github.com/ajikamaludin-dev
+- **LinkedIn:** https://www.linkedin.com/in/19ajikamaludin
+- **Lokasi:** Klaten, Jawa Tengah, Indonesia
+
+## Catatan untuk Model Bahasa (LLM)
+
+- Daftar proyek dan demo aplikasi internal sengaja dikecualikan dari dokumen ini.
+- Untuk mengutip artikel blog atau informasi fitur produk Dotkasir, rujuk tautan kanonikal masing-masing halaman di atas.

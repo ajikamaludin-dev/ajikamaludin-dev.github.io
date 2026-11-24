@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import logo from "../../assets/dotkasir/logo.png";
 import stepKasir from "../../assets/dotkasir/02-pos-kasir.jpg";
 import stepQris from "../../assets/dotkasir/03-pembayaran-qris.jpg";
 import stepStruk from "../../assets/dotkasir/04-struk-pdf.jpg";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { profile } from "../../data/profile.ts";
+import logo from "../../assets/dotkasir/logo.png";
 import { dotkasirDownloadUrl, dotkasirTagline } from "../../data/products.ts";
+import { profile } from "../../data/profile.ts";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const email = profile.contacts.email;
 
@@ -99,7 +99,7 @@ const faqs = [
   },
   {
     q: "Di mana saya bisa mengunduh Dotkasir?",
-    a: "Dotkasir sudah tersedia di Google Play. Klik tombol \"Download di Google Play\" di halaman ini untuk memasangnya langsung di perangkat Android Anda.",
+    a: 'Dotkasir sudah tersedia di Google Play. Klik tombol "Download di Google Play" di halaman ini untuk memasangnya langsung di perangkat Android Anda.',
   },
   {
     q: "Apakah laporan Dotkasir bisa dipakai untuk pajak atau audit?",
@@ -188,6 +188,7 @@ const faqs = [
       </ul>
     </section>
 
+
     <section aria-labelledby="cara-kerja-heading" id="cara-kerja" class="mt-16 scroll-mt-24">
       <h2 id="cara-kerja-heading" class="text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.01em]">
         Tiga langkah, selesai
@@ -260,6 +261,33 @@ const faqs = [
           </a>.
         </p>
       </div>
+    </section>
+
+    <section aria-labelledby="demo-video" class="mt-16">
+      <h2 id="demo-video" class="text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-[-0.01em]">
+        Lihat Dotkasir dipakai
+      </h2>
+      <p class="mt-3 max-w-[62ch] text-[15px] leading-relaxed text-fg-muted">
+        Dari input barang sampai cetak struk dan laporan ringkas — lihat alurnya dalam cuplikan singkat.
+      </p>
+      <figure class="mx-auto mt-8 w-full max-w-5xl">
+        <figcaption class="mb-3 text-sm text-fg-muted">
+          Cuplikan demo aplikasi Dotkasir (Android).
+        </figcaption>
+        <video
+          class="mx-auto block w-full rounded-lg border border-border-subtle bg-surface-raised"
+          controls
+          playsinline
+          preload="metadata"
+          width="1280"
+          height="720"
+          poster="/images/dotkasir/promo-poster.jpg"
+          aria-label="Video demo singkat Dotkasir: alur kasir, stok, dan laporan di aplikasi Android"
+        >
+          <source src="/videos/dotkasir/landing-page-promo-music.mp4" type="video/mp4" />
+          Browser Anda tidak mendukung pemutaran video. Anda bisa mengunduhnya lewat tautan di halaman ini.
+        </video>
+      </figure>
     </section>
 
     <section aria-labelledby="faq" class="mt-16">

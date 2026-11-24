@@ -26,6 +26,7 @@ export const profile = {
     email: "aji19kamaludin@gmail.com",
     github: "https://github.com/ajikamaludin-dev",
     linkedin: "https://www.linkedin.com/in/19ajikamaludin",
+    blog: "https://ajikamaludin.blogspot.com",
   },
 } as const;
 

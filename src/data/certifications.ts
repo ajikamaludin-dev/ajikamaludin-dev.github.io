@@ -36,6 +36,7 @@ export interface Achievement {
   title: string;
   detail: string;
   year: string;
+  url?: string;
 }
 
 export const achievements: Achievement[] = [
@@ -50,9 +51,10 @@ export const achievements: Achievement[] = [
     year: "2017",
   },
   {
-    title: "Co-author",
+    title: "Author",
     detail: 'Buku "Linux System Administration & Debian Server"',
     year: "2015",
+    url: "/blog/buku-konfigurasi-debian-server/",
   },
   {
     title: "Juara 3",

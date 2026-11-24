@@ -66,7 +66,7 @@ export const products: Product[] = [
       "dibangun dengan JavaScript, React, dan React Native.",
     features: ["Versi Android di Google Play Store", "Versi web yang bisa diakses langsung"],
     links: [
-      { label: "KasirAja Web", url: "http://kasiraja.ajikamaludin.id/" },
+      { label: "KasirAja Web", url: "https://kasiraja.ajikamaludin.id/" },
       {
         label: "KasirAja Android",
         url: "https://play.google.com/store/apps/details?id=com.kasirajaandroid",
@@ -79,5 +79,12 @@ export const products: Product[] = [
 export const otherLinks: Link[] = [
   // Diambil dari `profile.contacts.github` — URL diketik sekali saja.
   { label: "GitHub Portfolio", url: profile.contacts.github },
-  { label: "Kumpulan Proyek Lain", url: "https://s.ajikamaludin.id/portofolio" },
+  {
+    label: "Kumpulan Proyek Lain",
+    url: "https://s.ajikamaludin.id/portofolio",
+  },
+  {
+    label: "Arsip Blog Lama (Blogspot)",
+    url: "https://ajikamaludin.blogspot.com/",
+  },
 ];

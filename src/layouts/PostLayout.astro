@@ -88,6 +88,8 @@ const postLd = {
       <slot />
     </div>
 
+    <slot name="after" />
+
     <script type="application/ld+json" set:html={JSON.stringify(postLd)} />
   </article>
 </BaseLayout>
