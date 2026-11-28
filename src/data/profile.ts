@@ -7,7 +7,7 @@ import { consultingCopy } from "./consulting.ts";
  */
 export const profile = {
   name: "Aji Kamaludin",
-  role: "Konsultan MVP & Pengembang Aplikasi",
+  role: "Konsultan MVP, Pengembang Aplikasi & Infrastruktur VPS",
   location: "Klaten, Indonesia",
   site: "https://ajikamaludin.id",
   /** Bukan placeholder — avatar ini memang dipakai sebagaimana adanya. */

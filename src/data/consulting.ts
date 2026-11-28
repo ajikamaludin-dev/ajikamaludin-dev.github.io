@@ -15,64 +15,62 @@ export interface ProcessStep {
 }
 
 export const consultingCopy = {
-  eyebrow: "Konsultan MVP & Pengembang Aplikasi",
-  headline: "Dari ide bisnis jadi aplikasi yang bisa dipakai.",
+  eyebrow: "Konsultan MVP & Infrastruktur VPS",
+  headline: "Dari ide aplikasi sampai server yang aman.",
   subheadline:
-    "Saya bantu UMKM besar dan startup mewujudkan produk digital — dari perencanaan, " +
-    "arsitektur, sampai rilis. 6+ tahun membangun sistem untuk bisnis.",
-  ctaPrimary: "Konsultasi proyek",
+    "Saya bantu UMKM dan startup membangun aplikasi MVP dari nol hingga rilis, " +
+    "sekaligus mengelola dan mengamankan VPS agar sistem tetap stabil. 6+ tahun pengalaman fullstack & Linux.",
+  ctaPrimary: "Konsultasi sekarang",
   ctaSecondary: "Lihat layanan",
-  consultationMessage: "Halo, saya ingin konsultasi proyek aplikasi. Bisa kita diskusi?",
+  consultationMessage:
+    "Halo, saya ingin konsultasi terkait pengembangan aplikasi MVP / pengelolaan & keamanan VPS. Bisa kita diskusi?",
 } as const;
 
 export const services: Service[] = [
   {
-    title: "Discovery & MVP Scoping",
+    title: "Konsultasi & Pengembangan MVP",
     description:
-      "Dari ide yang masih kabur jadi rencana build yang jelas: workshop, prioritas fitur, " +
-      "dan estimasi yang bisa dipertanggungjawabkan.",
+      "Dari discovery, prioritas fitur, sampai produk pertama yang siap dipakai pengguna nyata — " +
+      "dibangun dengan React, PHP/Laravel, atau Go sesuai kebutuhan bisnis.",
   },
   {
-    title: "MVP Development",
+    title: "Pengelolaan VPS",
     description:
-      "Membangun produk pertama yang benar-benar bisa dipakai pengguna nyata — dengan " +
-      "React, PHP, atau Go sesuai kebutuhan.",
+      "Setup server dari nol, konfigurasi web server & reverse proxy, automasi deployment, " +
+      "monitoring uptime, dan backup berkala agar aplikasi berjalan stabil.",
   },
   {
-    title: "Arsitektur & Infrastruktur",
+    title: "Keamanan VPS",
     description:
-      "Fondasi teknis yang siap tumbuh: AWS, microservices, dan alur deployment yang " +
-      "tidak bergantung pada satu orang.",
-  },
-  {
-    title: "Optimasi & Audit Teknis",
-    description:
-      "Memperbaiki sistem yang sudah ada — performa, keandalan, dan penanganan error di " +
-      "tengah alur, bukan tambahan belakangan.",
+      "Audit & hardening OS/SSH, konfigurasi firewall & mitigasi brute-force, isolasi " +
+      "service/container, SSL/TLS, dan pembaruan patch keamanan rutin.",
   },
 ];
 
 export const processSteps: ProcessStep[] = [
   {
     title: "Konsultasi awal",
-    description: "Diskusi gratis via WhatsApp untuk memahami masalah dan tujuan Anda.",
+    description: "Diskusi gratis via WhatsApp untuk memahami kebutuhan aplikasi atau kondisi VPS Anda.",
   },
   {
-    title: "Discovery & scoping",
-    description: "Memetakan kebutuhan, menentukan prioritas fitur, dan menyusun rencana build.",
+    title: "Discovery & audit",
+    description:
+      "Memetakan kebutuhan fitur MVP atau mengaudit konfigurasi, arsitektur, dan celah keamanan server.",
   },
   {
     title: "Proposal & kesepakatan",
     description: "Lingkup, estimasi, dan timeline ditetapkan sebelum pekerjaan dimulai.",
   },
   {
-    title: "Build + review berkala",
-    description: "Pembangunan bertahap dengan titik review supaya arah tetap selaras.",
+    title: "Eksekusi + review berkala",
+    description:
+      "Pembangunan bertahap atau setup & hardening server dengan titik review supaya arah tetap selaras.",
   },
   {
     title: "Handover & pendampingan",
-    description: "Dokumentasi, serah terima, dan pendampingan saat produk mulai dipakai.",
+    description:
+      "Dokumentasi, serah terima akses, serta opsi pendampingan atau maintenance berkelanjutan.",
   },
 ];
 
-export const engagementModel = "Project-based MVP & retainer konsultasi.";
+export const engagementModel = "Project-based (MVP & setup/audit VPS) atau retainer bulanan.";
