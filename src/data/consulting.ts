@@ -23,7 +23,7 @@ export const consultingCopy = {
   ctaPrimary: "Konsultasi sekarang",
   ctaSecondary: "Lihat layanan",
   consultationMessage:
-    "Halo, saya ingin konsultasi terkait pengembangan aplikasi MVP / pengelolaan & keamanan VPS. Bisa kita diskusi?",
+    "Halo, saya ingin konsultasi terkait pengembangan aplikasi MVP, pengelolaan & keamanan VPS, atau rilis ke Google Play Store. Bisa kita diskusi?",
 } as const;
 
 export const services: Service[] = [
@@ -45,12 +45,19 @@ export const services: Service[] = [
       "Audit & hardening OS/SSH, konfigurasi firewall & mitigasi brute-force, isolasi " +
       "service/container, SSL/TLS, dan pembaruan patch keamanan rutin.",
   },
+  {
+    title: "Publikasi Google Play Store",
+    description:
+      "Membantu anda untuk rilis aplikasi Android ke Google Play Store — konfigurasi signing, " +
+      "aset listing, kepatuhan kebijakan, sampai lolos review.",
+  },
 ];
 
 export const processSteps: ProcessStep[] = [
   {
     title: "Konsultasi awal",
-    description: "Diskusi gratis via WhatsApp untuk memahami kebutuhan aplikasi atau kondisi VPS Anda.",
+    description:
+      "Diskusi gratis via WhatsApp untuk memahami kebutuhan aplikasi atau kondisi VPS Anda.",
   },
   {
     title: "Discovery & audit",
@@ -59,7 +66,8 @@ export const processSteps: ProcessStep[] = [
   },
   {
     title: "Proposal & kesepakatan",
-    description: "Lingkup, estimasi, dan timeline ditetapkan sebelum pekerjaan dimulai.",
+    description:
+      "Lingkup, estimasi, dan timeline ditetapkan sebelum pekerjaan dimulai.",
   },
   {
     title: "Eksekusi + review berkala",
@@ -73,4 +81,5 @@ export const processSteps: ProcessStep[] = [
   },
 ];
 
-export const engagementModel = "Project-based (MVP & setup/audit VPS) atau retainer bulanan.";
+export const engagementModel =
+  "Project-based (MVP & setup/audit VPS) atau retainer bulanan.";

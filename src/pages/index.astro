@@ -36,7 +36,7 @@ const karyaProjects = allProjects.filter((p) => !excludedFromKarya.has(p.id));
 
 <BaseLayout
   title="Konsultan MVP, Pengembang Aplikasi & Jasa VPS — Aji Kamaludin"
-  description="Konsultan MVP & pengembang aplikasi untuk UMKM dan startup, serta jasa pengelolaan dan keamanan VPS. Juga pembuat Dotkasir, kasir Android gratis untuk warung."
+  description="Konsultan MVP & pengembang aplikasi untuk UMKM dan startup, jasa pengelolaan & keamanan VPS, serta publikasi aplikasi ke Google Play Store. Juga pembuat Dotkasir, kasir Android gratis untuk warung."
 >
   <section class="relative isolate -mt-14 left-1/2 w-screen -translate-x-1/2 overflow-hidden sm:-mt-16">
     <div class="hero-gradient absolute inset-0" aria-hidden="true"></div>
@@ -125,7 +125,7 @@ const karyaProjects = allProjects.filter((p) => !excludedFromKarya.has(p.id));
     >
       Layanan
     </h2>
-    <div class="mt-5 grid grid-cols-1 gap-4 @2xl:grid-cols-3">
+    <div class="mt-5 grid grid-cols-1 gap-4 @md:grid-cols-2">
       {
         services.map((s, i) => (
           <article class="rounded-3xl border border-border-subtle bg-surface-raised p-6">
@@ -419,7 +419,7 @@ const karyaProjects = allProjects.filter((p) => !excludedFromKarya.has(p.id));
         id="h-cta"
         class="text-[clamp(1.5rem,3.5vw,2.25rem)] font-semibold tracking-tight text-balance"
       >
-        Ada ide aplikasi atau butuh kelola VPS? Mari diskusi.
+        Ada ide aplikasi, butuh kelola VPS, atau mau rilis ke Play Store? Mari diskusi.
       </h2>
       <p class="mt-3 max-w-[56ch] text-[15px] leading-relaxed text-fg-muted">
         Konsultasi awal gratis — ceritakan kebutuhan produk atau kondisi server Anda, lalu kita
